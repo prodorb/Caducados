@@ -333,3 +333,460 @@
             border-radius: 12px;
             font-size: 12px;
             font-weight: 700;
+        }
+
+        .cause-details {
+            color: #666;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .cause-details a {
+            color: #667eea;
+            cursor: pointer;
+            text-decoration: underline;
+            font-weight: 600;
+            margin-top: 8px;
+            display: inline-block;
+        }
+
+        .cause-details a:hover {
+            color: #764ba2;
+        }
+
+        /* Status styles */
+        .status-caducada {
+            background-color: #ff6b6b;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 12px;
+        }
+
+        .status-riesgo {
+            background-color: #ffa500;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 12px;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #f5f5f5;
+            padding: 20px;
+            text-align: center;
+            color: #999;
+            font-size: 12px;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                border-radius: 0;
+            }
+
+            .header {
+                padding: 20px;
+            }
+
+            .header h1 {
+                font-size: 22px;
+            }
+
+            .content {
+                padding: 20px;
+            }
+
+            .tabs {
+                flex-direction: column;
+            }
+
+            .metric-card .value {
+                font-size: 24px;
+            }
+
+            .modal-content {
+                width: 95%;
+                margin: 20% auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📊 Reporte de Caducidades - Memorias</h1>
+            <p>Marzo 2024 | Seguimiento de Membresías y Ratificaciones</p>
+        </div>
+
+        <div class="content">
+            <div class="tabs">
+                <button class="tab-btn active" onclick="switchTab('tabMemoria')">Memorias</button>
+                <button class="tab-btn" onclick="switchTab('tabRatificaciones')">Ratificaciones</button>
+                <button class="tab-btn" onclick="switchTab('tabResumen')">Resumen</button>
+            </div>
+
+            <!-- TAB: Memorias -->
+            <div id="tabMemoria" class="tab-content active">
+                <div class="section">
+                    <div class="section-title">📌 Caducidades por Causa - MKT1</div>
+                    <div class="mem-toggle">
+                        <button class="mem-btn active" onclick="switchMem('memKT1')">Todas las causas</button>
+                        <button class="mem-btn" onclick="switchMem('memMayor')">Causas mayores</button>
+                    </div>
+
+                    <div id="memKT1" class="mem-content active">
+                        <div id="causasContainer"></div>
+                    </div>
+
+                    <div id="memMayor" class="mem-content">
+                        <div class="data-item">
+                            <strong>Top 3 causas de caducidad:</strong>
+                        </div>
+                        <div class="data-item">
+                            1. <strong>Desistido:</strong> 15 registros
+                        </div>
+                        <div class="data-item">
+                            2. <strong>Baja:</strong> 12 registros
+                        </div>
+                        <div class="data-item">
+                            3. <strong>Ghosting:</strong> 8 registros
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB: Ratificaciones -->
+            <div id="tabRatificaciones" class="tab-content">
+                <div class="section">
+                    <div class="section-title">⚠️ Ratificaciones Caducadas y en Riesgo</div>
+                    <div class="metric-card">
+                        <div class="label">Total de Ratificaciones Críticas</div>
+                        <div class="value">24</div>
+                    </div>
+
+                    <div class="cause-item">
+                        <div class="cause-title">
+                            Ratificaciones Caducadas
+                            <span class="cause-count">18</span>
+                        </div>
+                        <div class="cause-details">
+                            Ratificaciones que han sobrepasado su fecha de vencimiento.
+                            <a onclick="openRatificacionesModal('caducada', 'Ratificaciones Caducadas (18)', [{nombre: 'RATA001', fecha_caducidad: '01-03-2024', estado: 'CADUCADA'}, {nombre: 'RATA002', fecha_caducidad: '02-03-2024', estado: 'CADUCADA'}, {nombre: 'RATA003', fecha_caducidad: '03-03-2024', estado: 'CADUCADA'}, {nombre: 'RATA004', fecha_caducidad: '05-03-2024', estado: 'CADUCADA'}, {nombre: 'RATA005', fecha_caducidad: '07-03-2024', estado: 'CADUCADA'}])">Ver registros (18)</a>
+                        </div>
+                    </div>
+
+                    <div class="cause-item">
+                        <div class="cause-title">
+                            En Riesgo de Caducidad
+                            <span class="cause-count">6</span>
+                        </div>
+                        <div class="cause-details">
+                            Ratificaciones próximas a caducar en los próximos 7 días.
+                            <a onclick="openRatificacionesModal('riesgo', 'Ratificaciones en Riesgo (6)', [{nombre: 'RATA010', fecha_caducidad: '15-03-2024', estado: 'EN RIESGO'}, {nombre: 'RATA011', fecha_caducidad: '16-03-2024', estado: 'EN RIESGO'}, {nombre: 'RATA012', fecha_caducidad: '17-03-2024', estado: 'EN RIESGO'}])">Ver registros (6)</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB: Resumen -->
+            <div id="tabResumen" class="tab-content">
+                <div class="section">
+                    <div class="section-title">📈 Resumen General del Mes</div>
+
+                    <div class="metric-card">
+                        <div class="label">Memorias Caducadas</div>
+                        <div class="value">47</div>
+                    </div>
+
+                    <div class="metric-card">
+                        <div class="label">Ratificaciones Críticas</div>
+                        <div class="value">24</div>
+                    </div>
+
+                    <div class="metric-card">
+                        <div class="label">Total de Impacto</div>
+                        <div class="value">71</div>
+                    </div>
+
+                    <div class="data-item" style="margin-top: 30px;">
+                        <strong>Observaciones clave:</strong>
+                    </div>
+                    <div class="data-item">
+                        • La causa más frecuente de caducidad es <strong>"Desistido"</strong>, representando el 32% de los casos.
+                    </div>
+                    <div class="data-item">
+                        • Se identificaron <strong>18 ratificaciones caducadas</strong> que requieren seguimiento inmediato.
+                    </div>
+                    <div class="data-item">
+                        • <strong>6 ratificaciones están en riesgo</strong> de caducar en los próximos 7 días.
+                    </div>
+                    <div class="data-item">
+                        • Recomendación: Realizar contacto proactivo con clientes en riesgo para prevenir nuevas caducidades.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>Reporte generado automáticamente | Marzo 2024</p>
+        </div>
+    </div>
+
+    <!-- Modal para registros -->
+    <div id="recordsModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Registros</h2>
+                <button class="close-btn" onclick="closeModal()">&times;</button>
+            </div>
+            <table class="modal-table">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Comentarios</th>
+                    </tr>
+                </thead>
+                <tbody id="modalTableBody">
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Modal para ratificaciones -->
+    <div id="ratificacionesModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="ratificacionesModalTitle">Ratificaciones</h2>
+                <button class="close-btn" onclick="closeRatificacionesModal()">&times;</button>
+            </div>
+            <table class="modal-table">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Fecha de Caducidad</th>
+                        <th>Estado</th>
+                    </tr>
+                </thead>
+                <tbody id="ratificacionesModalTableBody">
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        const datosCompletos = {
+            'Desistido': [
+                { nombre: 'Cliente A', comentario: 'Decidió retirarse del proyecto.' },
+                { nombre: 'Cliente B', comentario: 'Cambió de proveedor.' },
+                { nombre: 'Cliente C', comentario: 'Redujo servicios.' },
+                { nombre: 'Cliente D', comentario: 'Finalización de contrato.' },
+                { nombre: 'Cliente E', comentario: 'Cambio de estrategia.' }
+            ],
+            'Ghosting': [
+                { nombre: 'Cliente F', comentario: 'Sin respuesta desde febrero.' },
+                { nombre: 'Cliente G', comentario: 'Desapareció sin aviso.' },
+                { nombre: 'Cliente H', comentario: 'No contactable.' }
+            ],
+            'Descontento servicio': [
+                { nombre: 'Cliente I', comentario: 'Calidad insuficiente.' },
+                { nombre: 'Cliente J', comentario: 'Expectativas no cumplidas.' }
+            ],
+            'Baja': [
+                { nombre: 'Cliente K', comentario: 'Solicitud de cancelación.' },
+                { nombre: 'Cliente L', comentario: 'Fin de ciclo de pago.' }
+            ],
+            'Baja autónomo': [
+                { nombre: 'Cliente M', comentario: 'Cierre de negocio personal.' }
+            ],
+            'Baja - Cierre de negocio': [
+                { nombre: 'Cliente N', comentario: 'Insolvencia.' }
+            ],
+            'Baja - Desinterés del cliente': [
+                { nombre: 'Cliente O', comentario: 'Pérdida de interés.' }
+            ],
+            'Pago IGIC': [
+                { nombre: 'Cliente P', comentario: 'Falta de pago de impuestos.' }
+            ],
+            'Baja - Imposibilidad subvención': [
+                { nombre: 'Cliente Q', comentario: 'Restricciones de subvención.' }
+            ],
+            'Baja - Atención recibida': [
+                { nombre: 'Cliente R', comentario: 'Insatisfacción con atención.' }
+            ],
+            'Dificultad con portal gestión': [
+                { nombre: 'Cliente S', comentario: 'Problemas técnicos con plataforma.' }
+            ],
+            'Otra': [
+                { nombre: 'Cliente T', comentario: 'Motivo no clasificado.' }
+            ]
+        };
+
+        // Orden de causas para mostrar (Memorias)
+        const ordenCausas = [
+            'Desistido', 'Ghosting', 'Descontento servicio', 'Baja', 'Baja autónomo',
+            'Baja - Cierre de negocio', 'Baja - Desinterés del cliente', 'Pago IGIC',
+            'Baja - Imposibilidad subvención', 'Baja - Atención recibida',
+            'Dificultad con portal gestión', 'Otra'
+        ];
+
+        function initializeCauses() {
+            const container = document.getElementById('causasContainer');
+            
+            ordenCausas.forEach((causa, index) => {
+                if (datosCompletos[causa]) {
+                    const count = datosCompletos[causa].length;
+                    const descripcion = getDescription(causa);
+                    
+                    const html = `
+                        <div class="collapsible-section">
+                            <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                                <span><strong>MKT1 - ${causa} (${count})</strong></span>
+                                <span class="arrow">▼</span>
+                            </div>
+                            <div class="collapsible-content">
+                                <div class="cause-item">
+                                    <div class="cause-title">${causa} <span class="cause-count">${count}</span></div>
+                                    <div class="cause-details">
+                                        ${descripcion}<br>
+                                        <a onclick="openModal('${causa}', 'MKT1 - ${causa} (${count})', datosCompletos['${causa}'])">Ver registros (${count})</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    
+                    container.innerHTML += html;
+                }
+            });
+        }
+
+        function getDescription(causa) {
+            const descriptions = {
+                'Desistido': 'Cliente decidió retirarse del proyecto o servicio.',
+                'Ghosting': 'Cliente desapareció sin comunicación o respuesta.',
+                'Descontento servicio': 'Cliente insatisfecho con la calidad del servicio.',
+                'Baja': 'Cliente solicitó cancelación del servicio.',
+                'Baja autónomo': 'Cliente cerró su negocio o se dio de baja como autónomo.',
+                'Baja - Cierre de negocio': 'El negocio fue cerrado.',
+                'Baja - Desinterés del cliente': 'Cliente perdió interés en continuar.',
+                'Pago IGIC': 'No realizó el pago del IGIC.',
+                'Baja - Imposibilidad subvención': 'No pudo continuar por restricciones de subvención.',
+                'Baja - Atención recibida': 'Insatisfacción con la atención recibida.',
+                'Dificultad con portal gestión': 'Dificultad para usar la plataforma de gestión.',
+                'Otra': 'Otras causas no categorizadas.'
+            };
+            return descriptions[causa] || 'Causa pendiente de clasificar.';
+        }
+
+        function switchTab(tabName) {
+            // Ocultar todos los tabs
+            const tabs = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            
+            // Desactivar todos los botones
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            
+            // Mostrar el tab seleccionado
+            const selectedTab = document.getElementById(tabName);
+            if (selectedTab) {
+                selectedTab.classList.add('active');
+            }
+            
+            // Activar el botón clickeado usando event.currentTarget
+            if (event && event.currentTarget) {
+                event.currentTarget.classList.add('active');
+            }
+        }
+
+        function switchMem(memName) {
+            const contents = document.querySelectorAll('.mem-content');
+            contents.forEach(content => content.classList.remove('active'));
+            
+            const buttons = document.querySelectorAll('.mem-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            
+            const selectedMem = document.getElementById(memName);
+            if (selectedMem) {
+                selectedMem.classList.add('active');
+            }
+            
+            if (event && event.currentTarget) {
+                event.currentTarget.classList.add('active');
+            }
+        }
+
+        function toggleCollapsible(element) {
+            element.classList.toggle('active');
+            const content = element.nextElementSibling;
+            content.classList.toggle('active');
+        }
+
+        function openModal(titulo, modalTitle, data) {
+            document.getElementById('modalTitle').textContent = modalTitle;
+            const tbody = document.getElementById('modalTableBody');
+            tbody.innerHTML = '';
+            
+            data.forEach(row => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td class="object-name">${row.nombre}</td>
+                    <td class="comments-text">${row.comentario}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+            
+            document.getElementById('recordsModal').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('recordsModal').classList.remove('active');
+        }
+
+        function openRatificacionesModal(motivo, modalTitle, data) {
+            document.getElementById('ratificacionesModalTitle').textContent = modalTitle;
+            const tbody = document.getElementById('ratificacionesModalTableBody');
+            tbody.innerHTML = '';
+            
+            data.forEach(row => {
+                const statusClass = row.estado === 'CADUCADA' ? 'status-caducada' : 'status-riesgo';
+                const statusText = row.estado === 'CADUCADA' ? 'CADUCADA' : 'EN RIESGO';
+                
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td class="object-name">${row.nombre}</td>
+                    <td>${row.fecha_caducidad}</td>
+                    <td><span class="${statusClass}">${statusText}</span></td>
+                `;
+                tbody.appendChild(tr);
+            });
+            
+            document.getElementById('ratificacionesModal').classList.add('active');
+        }
+
+        function closeRatificacionesModal() {
+            document.getElementById('ratificacionesModal').classList.remove('active');
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('recordsModal');
+            const ratModal = document.getElementById('ratificacionesModal');
+            if (event.target == modal) {
+                closeModal();
+            }
+            if (event.target == ratModal) {
+                closeRatificacionesModal();
+            }
+        }
+
+        // Inicializar
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeCauses();
+        });
+    </script>
+</body>
+</html>
