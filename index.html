@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reporte Semanal - Caducidades de Memorias</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
     <style>
         * {
             margin: 0;
@@ -164,10 +165,6 @@
             color: white;
         }
 
-        .mem-btn:hover {
-            transform: translateY(-1px);
-        }
-
         .mem-content {
             display: none;
         }
@@ -176,127 +173,29 @@
             display: block;
         }
 
-        /* Modal styles */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.4);
-        }
-
-        .modal.active {
-            display: block;
-        }
-
-        .modal-content {
-            background-color: #fefefe;
-            margin: 5% auto;
-            padding: 30px;
-            border-radius: 12px;
-            width: 90%;
-            max-width: 900px;
-            max-height: 80vh;
-            overflow-y: auto;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-        }
-
-        .modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-            border-bottom: 2px solid #e0e0e0;
-            padding-bottom: 15px;
-        }
-
-        .modal-header h2 {
-            color: #333;
-            font-size: 20px;
-        }
-
-        .close-btn {
-            font-size: 28px;
-            font-weight: bold;
-            color: #aaa;
-            cursor: pointer;
-            border: none;
-            background: none;
-        }
-
-        .close-btn:hover {
-            color: #000;
-        }
-
-        .modal-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-
-        .modal-table th {
-            background-color: #667eea;
-            color: white;
-            padding: 12px;
-            text-align: left;
-            font-weight: 600;
-        }
-
-        .modal-table td {
-            padding: 12px;
-            border-bottom: 1px solid #e0e0e0;
-        }
-
-        .modal-table tr:hover {
-            background-color: #f5f5f5;
-        }
-
-        .object-name {
-            font-weight: 600;
-            color: #333;
-        }
-
-        .comments-text {
-            color: #666;
-            font-size: 13px;
-        }
-
-        /* Collapsible styles */
         .collapsible-section {
-            margin-bottom: 15px;
-            border-radius: 8px;
-            overflow: hidden;
-            border: 1px solid #e0e0e0;
+            margin-bottom: 20px;
         }
 
         .collapsible-header {
-            background-color: #f5f5f5;
-            color: #333;
-            padding: 15px;
+            background: #667eea;
+            color: white;
+            padding: 12px 16px;
             cursor: pointer;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-weight: 600;
+            border-radius: 6px;
             user-select: none;
             transition: all 0.3s;
         }
 
         .collapsible-header:hover {
-            background-color: #e8e8e8;
+            background: #5568d3;
         }
 
-        .collapsible-header.active {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-        }
-
-        .arrow {
+        .collapsible-header .arrow {
             transition: transform 0.3s;
-            display: inline-block;
         }
 
         .collapsible-header.active .arrow {
@@ -305,56 +204,60 @@
 
         .collapsible-content {
             display: none;
-            background-color: white;
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-top: none;
+            padding: 16px;
+            border-radius: 0 0 6px 6px;
         }
 
         .collapsible-content.active {
             display: block;
         }
 
+        .chart-container {
+            position: relative;
+            height: 400px;
+            margin: 30px 0;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .chart-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
         .cause-item {
-            padding: 15px;
-            border-top: 1px solid #e0e0e0;
+            padding: 12px;
+            background: #f9f9f9;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            border-left: 3px solid #667eea;
         }
 
         .cause-title {
             font-weight: 600;
             color: #333;
-            margin-bottom: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            margin-bottom: 8px;
         }
 
         .cause-count {
-            background-color: #667eea;
+            background: #667eea;
             color: white;
             padding: 2px 8px;
-            border-radius: 12px;
+            border-radius: 4px;
             font-size: 12px;
             font-weight: 700;
+            margin-left: 10px;
         }
 
-        .cause-details {
-            color: #666;
-            font-size: 13px;
-            line-height: 1.6;
-        }
-
-        .cause-details a {
-            color: #667eea;
-            cursor: pointer;
-            text-decoration: underline;
-            font-weight: 600;
-            margin-top: 8px;
-            display: inline-block;
-        }
-
-        .cause-details a:hover {
-            color: #764ba2;
-        }
-
-        /* Status styles */
         .status-caducada {
             background-color: #ff6b6b;
             color: white;
@@ -373,7 +276,6 @@
             font-size: 12px;
         }
 
-        /* Footer */
         .footer {
             background-color: #f5f5f5;
             padding: 20px;
@@ -381,6 +283,34 @@
             color: #999;
             font-size: 12px;
             border-top: 1px solid #e0e0e0;
+        }
+
+        .table-scroll {
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+
+        table th {
+            background-color: #667eea;
+            color: white;
+            padding: 10px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        table td {
+            padding: 8px;
+            border-bottom: 1px solid #eee;
+        }
+
+        table tr:hover {
+            background-color: #f9f9f9;
         }
 
         @media (max-width: 768px) {
@@ -408,9 +338,8 @@
                 font-size: 24px;
             }
 
-            .modal-content {
-                width: 95%;
-                margin: 20% auto;
+            .chart-container {
+                height: 300px;
             }
         }
     </style>
@@ -419,74 +348,180 @@
     <div class="container">
         <div class="header">
             <h1>📊 Reporte de Caducidades - Memorias</h1>
-            <p>Marzo 2024 | Seguimiento de Membresías y Ratificaciones</p>
+            <p>Marzo 2024 | Seguimiento de Membresías y Causas de Caducidad</p>
         </div>
 
         <div class="content">
             <div class="tabs">
-                <button class="tab-btn active" onclick="switchTab('tabMemoria')">Memorias</button>
-                <button class="tab-btn" onclick="switchTab('tabRatificaciones')">Ratificaciones</button>
+                <button class="tab-btn active" onclick="switchTab('tabMemoria')">Memorias por Causa</button>
+                <button class="tab-btn" onclick="switchTab('tabGraficos')">Gráficos</button>
+                <button class="tab-btn" onclick="switchTab('tabBajasSinFecha')">Bajas Sin Fecha</button>
                 <button class="tab-btn" onclick="switchTab('tabResumen')">Resumen</button>
             </div>
 
-            <!-- TAB: Memorias -->
+            <!-- TAB: Memorias por Causa -->
             <div id="tabMemoria" class="tab-content active">
                 <div class="section">
-                    <div class="section-title">📌 Caducidades por Causa - MKT1</div>
+                    <div class="section-title">📌 Caducidades por Causa y Canal</div>
+                    
                     <div class="mem-toggle">
-                        <button class="mem-btn active" onclick="switchMem('memKT1')">Todas las causas</button>
-                        <button class="mem-btn" onclick="switchMem('memMayor')">Causas mayores</button>
+                        <button class="mem-btn active" onclick="switchMem('mkt1Memory')">MKT1</button>
+                        <button class="mem-btn" onclick="switchMem('pc1Memory')">PC1</button>
+                        <button class="mem-btn" onclick="switchMem('mkt2Memory')">MKT2</button>
                     </div>
 
-                    <div id="memKT1" class="mem-content active">
-                        <div id="causasContainer"></div>
+                    <div id="mkt1Memory" class="mem-content active">
+                        <div class="collapsible-section">
+                            <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                                <span><strong>MKT1 - Caducidades por Causa (47 total)</strong></span>
+                                <span class="arrow">▼</span>
+                            </div>
+                            <div class="collapsible-content active">
+                                <div class="cause-item">
+                                    <div class="cause-title">Desistido <span class="cause-count">15</span></div>
+                                </div>
+                                <div class="cause-item">
+                                    <div class="cause-title">Ghosting <span class="cause-count">12</span></div>
+                                </div>
+                                <div class="cause-item">
+                                    <div class="cause-title">Baja <span class="cause-count">10</span></div>
+                                </div>
+                                <div class="cause-item">
+                                    <div class="cause-title">Descontento servicio <span class="cause-count">6</span></div>
+                                </div>
+                                <div class="cause-item">
+                                    <div class="cause-title">Otras causas <span class="cause-count">4</span></div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-                    <div id="memMayor" class="mem-content">
-                        <div class="data-item">
-                            <strong>Top 3 causas de caducidad:</strong>
+                    <div id="pc1Memory" class="mem-content">
+                        <div class="collapsible-section">
+                            <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                                <span><strong>PC1 - Caducidades por Causa (228 total)</strong></span>
+                                <span class="arrow">▼</span>
+                            </div>
+                            <div class="collapsible-content active">
+                                <div class="cause-item">
+                                    <div class="cause-title">Ghosting <span class="cause-count">79</span></div>
+                                </div>
+                                <div class="cause-item">
+                                    <div class="cause-title">Baja sin motivo <span class="cause-count">43</span></div>
+                                </div>
+                                <div class="cause-item">
+                                    <div class="cause-title">Pago IGIC + Falta de pago <span class="cause-count">29</span></div>
+                                </div>
+                                <div class="cause-item">
+                                    <div class="cause-title">Desistido <span class="cause-count">24</span></div>
+                                </div>
+                                <div class="cause-item">
+                                    <div class="cause-title">Descontento gestión PC <span class="cause-count">12</span></div>
+                                </div>
+                                <div class="cause-item">
+                                    <div class="cause-title">Otros <span class="cause-count">41</span></div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="data-item">
-                            1. <strong>Desistido:</strong> 15 registros
-                        </div>
-                        <div class="data-item">
-                            2. <strong>Baja:</strong> 12 registros
-                        </div>
-                        <div class="data-item">
-                            3. <strong>Ghosting:</strong> 8 registros
+                    </div>
+
+                    <div id="mkt2Memory" class="mem-content">
+                        <div class="collapsible-section">
+                            <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                                <span><strong>MKT2 - Caducidades por Causa (156 total)</strong></span>
+                                <span class="arrow">▼</span>
+                            </div>
+                            <div class="collapsible-content active">
+                                <div class="cause-item">
+                                    <div class="cause-title">Ghosting <span class="cause-count">46</span></div>
+                                </div>
+                                <div class="cause-item">
+                                    <div class="cause-title">Pendiente firma <span class="cause-count">39</span></div>
+                                </div>
+                                <div class="cause-item">
+                                    <div class="cause-title">Baja <span class="cause-count">25</span></div>
+                                </div>
+                                <div class="cause-item">
+                                    <div class="cause-title">Sin evidencia <span class="cause-count">20</span></div>
+                                </div>
+                                <div class="cause-item">
+                                    <div class="cause-title">Baja autónomo <span class="cause-count">11</span></div>
+                                </div>
+                                <div class="cause-item">
+                                    <div class="cause-title">Desistido <span class="cause-count">10</span></div>
+                                </div>
+                                <div class="cause-item">
+                                    <div class="cause-title">Otra <span class="cause-count">5</span></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- TAB: Ratificaciones -->
-            <div id="tabRatificaciones" class="tab-content">
+            <!-- TAB: Gráficos -->
+            <div id="tabGraficos" class="tab-content">
                 <div class="section">
-                    <div class="section-title">⚠️ Ratificaciones Caducadas y en Riesgo</div>
+                    <div class="section-title">📈 Análisis Visual por Canal</div>
+                    
+                    <div class="chart-container">
+                        <div class="chart-title">Distribución de Caducidades - MKT1 (47 registros)</div>
+                        <canvas id="mkt1CausesChart"></canvas>
+                    </div>
+
+                    <div class="chart-container">
+                        <div class="chart-title">Distribución de Caducidades - PC1 (228 registros)</div>
+                        <canvas id="pc1CausesChart"></canvas>
+                    </div>
+
+                    <div class="chart-container">
+                        <div class="chart-title">Distribución de Caducidades - MKT2 (156 registros)</div>
+                        <canvas id="mkt2CausesChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB: Bajas Sin Fecha -->
+            <div id="tabBajasSinFecha" class="tab-content">
+                <div class="section">
+                    <div class="section-title">⚠️ Bajas sin Fecha de Caducidad</div>
                     <div class="metric-card">
-                        <div class="label">Total de Ratificaciones Críticas</div>
-                        <div class="value">24</div>
+                        <div class="label">Total de Bajas Sin Fecha</div>
+                        <div class="value">65</div>
                     </div>
 
-                    <div class="cause-item">
-                        <div class="cause-title">
-                            Ratificaciones Caducadas
-                            <span class="cause-count">18</span>
-                        </div>
-                        <div class="cause-details">
-                            Ratificaciones que han sobrepasado su fecha de vencimiento.
-                            <a onclick="openRatificacionesModal('caducada', 'Ratificaciones Caducadas (18)', [{nombre: 'RATA001', fecha_caducidad: '01-03-2024', estado: 'CADUCADA'}, {nombre: 'RATA002', fecha_caducidad: '02-03-2024', estado: 'CADUCADA'}, {nombre: 'RATA003', fecha_caducidad: '03-03-2024', estado: 'CADUCADA'}, {nombre: 'RATA004', fecha_caducidad: '05-03-2024', estado: 'CADUCADA'}, {nombre: 'RATA005', fecha_caducidad: '07-03-2024', estado: 'CADUCADA'}])">Ver registros (18)</a>
+                    <div class="mem-toggle">
+                        <button class="mem-btn active" onclick="switchBajasSinFecha('mkt')">MKT</button>
+                        <button class="mem-btn" onclick="switchBajasSinFecha('pc')">PC</button>
+                    </div>
+
+                    <div id="bajas_mkt_content" class="mem-content active">
+                        <div class="table-scroll">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Proyecto</th>
+                                        <th>Fecha Caducidad</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tabla_mkt_bajas">
+                                </tbody>
+                            </table>
                         </div>
                     </div>
 
-                    <div class="cause-item">
-                        <div class="cause-title">
-                            En Riesgo de Caducidad
-                            <span class="cause-count">6</span>
-                        </div>
-                        <div class="cause-details">
-                            Ratificaciones próximas a caducar en los próximos 7 días.
-                            <a onclick="openRatificacionesModal('riesgo', 'Ratificaciones en Riesgo (6)', [{nombre: 'RATA010', fecha_caducidad: '15-03-2024', estado: 'EN RIESGO'}, {nombre: 'RATA011', fecha_caducidad: '16-03-2024', estado: 'EN RIESGO'}, {nombre: 'RATA012', fecha_caducidad: '17-03-2024', estado: 'EN RIESGO'}])">Ver registros (6)</a>
+                    <div id="bajas_pc_content" class="mem-content">
+                        <div class="table-scroll">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Proyecto</th>
+                                        <th>Fecha Caducidad</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tabla_pc_bajas">
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
@@ -495,211 +530,122 @@
             <!-- TAB: Resumen -->
             <div id="tabResumen" class="tab-content">
                 <div class="section">
-                    <div class="section-title">📈 Resumen General del Mes</div>
+                    <div class="section-title">📋 Resumen General</div>
 
                     <div class="metric-card">
-                        <div class="label">Memorias Caducadas</div>
-                        <div class="value">47</div>
+                        <div class="label">Total de Memorias Caducadas</div>
+                        <div class="value">431</div>
                     </div>
 
                     <div class="metric-card">
-                        <div class="label">Ratificaciones Críticas</div>
-                        <div class="value">24</div>
+                        <div class="label">Bajas Sin Fecha</div>
+                        <div class="value">65</div>
                     </div>
 
                     <div class="metric-card">
                         <div class="label">Total de Impacto</div>
-                        <div class="value">71</div>
+                        <div class="value">696</div>
                     </div>
 
                     <div class="data-item" style="margin-top: 30px;">
-                        <strong>Observaciones clave:</strong>
+                        <strong>Análisis por Canal:</strong>
                     </div>
                     <div class="data-item">
-                        • La causa más frecuente de caducidad es <strong>"Desistido"</strong>, representando el 32% de los casos.
+                        • <strong>MKT1:</strong> 47 caducidades (10.9% del total)
                     </div>
                     <div class="data-item">
-                        • Se identificaron <strong>18 ratificaciones caducadas</strong> que requieren seguimiento inmediato.
+                        • <strong>PC1:</strong> 228 caducidades (52.9% del total) - <em>Mayor volumen</em>
                     </div>
                     <div class="data-item">
-                        • <strong>6 ratificaciones están en riesgo</strong> de caducar en los próximos 7 días.
+                        • <strong>MKT2:</strong> 156 caducidades (36.2% del total)
+                    </div>
+
+                    <div class="data-item" style="margin-top: 20px;">
+                        <strong>Causas Más Frecuentes (Global):</strong>
                     </div>
                     <div class="data-item">
-                        • Recomendación: Realizar contacto proactivo con clientes en riesgo para prevenir nuevas caducidades.
+                        • Ghosting: 137 registros (31.8% de las caducidades)
+                    </div>
+                    <div class="data-item">
+                        • Baja/Bajas sin motivo: 105 registros (24.4%)
+                    </div>
+                    <div class="data-item">
+                        • Pendiente firma / Desistido: 85 registros (19.7%)
+                    </div>
+
+                    <div class="data-item" style="margin-top: 20px;">
+                        <strong>Recomendaciones Estratégicas:</strong>
+                    </div>
+                    <div class="data-item">
+                        1. Priorizar seguimiento de Ghosting - es la causa más frecuente
+                    </div>
+                    <div class="data-item">
+                        2. Revisar procesos en PC1 - concentra más del 50% de caducidades
+                    </div>
+                    <div class="data-item">
+                        3. Investigar causas de "Bajas sin motivo" y "Pendiente firma"
+                    </div>
+                    <div class="data-item">
+                        4. Asignar fechas a las 65 bajas pendientes para mejor seguimiento
                     </div>
                 </div>
             </div>
         </div>
 
         <div class="footer">
-            <p>Reporte generado automáticamente | Marzo 2024</p>
-        </div>
-    </div>
-
-    <!-- Modal para registros -->
-    <div id="recordsModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 id="modalTitle">Registros</h2>
-                <button class="close-btn" onclick="closeModal()">&times;</button>
-            </div>
-            <table class="modal-table">
-                <thead>
-                    <tr>
-                        <th>Nombre</th>
-                        <th>Comentarios</th>
-                    </tr>
-                </thead>
-                <tbody id="modalTableBody">
-                </tbody>
-            </table>
-        </div>
-    </div>
-
-    <!-- Modal para ratificaciones -->
-    <div id="ratificacionesModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 id="ratificacionesModalTitle">Ratificaciones</h2>
-                <button class="close-btn" onclick="closeRatificacionesModal()">&times;</button>
-            </div>
-            <table class="modal-table">
-                <thead>
-                    <tr>
-                        <th>Nombre</th>
-                        <th>Fecha de Caducidad</th>
-                        <th>Estado</th>
-                    </tr>
-                </thead>
-                <tbody id="ratificacionesModalTableBody">
-                </tbody>
-            </table>
+            <p>Reporte generado automáticamente | Marzo 2024 | Total de Memorias: 696</p>
         </div>
     </div>
 
     <script>
-        const datosCompletos = {
-            'Desistido': [
-                { nombre: 'Cliente A', comentario: 'Decidió retirarse del proyecto.' },
-                { nombre: 'Cliente B', comentario: 'Cambió de proveedor.' },
-                { nombre: 'Cliente C', comentario: 'Redujo servicios.' },
-                { nombre: 'Cliente D', comentario: 'Finalización de contrato.' },
-                { nombre: 'Cliente E', comentario: 'Cambio de estrategia.' }
+        // Datos de Bajas sin Fecha
+        const datossinFechaBajaDefinitivo = {
+            'MKT': [
+                { nombre: 'Memoria MKT-001', fecha_caducidad: 'Sin asignar' },
+                { nombre: 'Memoria MKT-002', fecha_caducidad: 'Sin asignar' },
+                { nombre: 'Memoria MKT-003', fecha_caducidad: 'Sin asignar' },
+                { nombre: 'Memoria MKT-004', fecha_caducidad: 'Sin asignar' },
+                { nombre: 'Memoria MKT-005', fecha_caducidad: 'Sin asignar' }
             ],
-            'Ghosting': [
-                { nombre: 'Cliente F', comentario: 'Sin respuesta desde febrero.' },
-                { nombre: 'Cliente G', comentario: 'Desapareció sin aviso.' },
-                { nombre: 'Cliente H', comentario: 'No contactable.' }
-            ],
-            'Descontento servicio': [
-                { nombre: 'Cliente I', comentario: 'Calidad insuficiente.' },
-                { nombre: 'Cliente J', comentario: 'Expectativas no cumplidas.' }
-            ],
-            'Baja': [
-                { nombre: 'Cliente K', comentario: 'Solicitud de cancelación.' },
-                { nombre: 'Cliente L', comentario: 'Fin de ciclo de pago.' }
-            ],
-            'Baja autónomo': [
-                { nombre: 'Cliente M', comentario: 'Cierre de negocio personal.' }
-            ],
-            'Baja - Cierre de negocio': [
-                { nombre: 'Cliente N', comentario: 'Insolvencia.' }
-            ],
-            'Baja - Desinterés del cliente': [
-                { nombre: 'Cliente O', comentario: 'Pérdida de interés.' }
-            ],
-            'Pago IGIC': [
-                { nombre: 'Cliente P', comentario: 'Falta de pago de impuestos.' }
-            ],
-            'Baja - Imposibilidad subvención': [
-                { nombre: 'Cliente Q', comentario: 'Restricciones de subvención.' }
-            ],
-            'Baja - Atención recibida': [
-                { nombre: 'Cliente R', comentario: 'Insatisfacción con atención.' }
-            ],
-            'Dificultad con portal gestión': [
-                { nombre: 'Cliente S', comentario: 'Problemas técnicos con plataforma.' }
-            ],
-            'Otra': [
-                { nombre: 'Cliente T', comentario: 'Motivo no clasificado.' }
+            'PC': [
+                { nombre: 'Memoria PC-001', fecha_caducidad: 'Sin asignar' },
+                { nombre: 'Memoria PC-002', fecha_caducidad: 'Sin asignar' },
+                { nombre: 'Memoria PC-003', fecha_caducidad: 'Sin asignar' },
+                { nombre: 'Memoria PC-004', fecha_caducidad: 'Sin asignar' },
+                { nombre: 'Memoria PC-005', fecha_caducidad: 'Sin asignar' }
             ]
         };
 
-        // Orden de causas para mostrar (Memorias)
-        const ordenCausas = [
-            'Desistido', 'Ghosting', 'Descontento servicio', 'Baja', 'Baja autónomo',
-            'Baja - Cierre de negocio', 'Baja - Desinterés del cliente', 'Pago IGIC',
-            'Baja - Imposibilidad subvención', 'Baja - Atención recibida',
-            'Dificultad con portal gestión', 'Otra'
-        ];
-
-        function initializeCauses() {
-            const container = document.getElementById('causasContainer');
-            
-            ordenCausas.forEach((causa, index) => {
-                if (datosCompletos[causa]) {
-                    const count = datosCompletos[causa].length;
-                    const descripcion = getDescription(causa);
-                    
-                    const html = `
-                        <div class="collapsible-section">
-                            <div class="collapsible-header" onclick="toggleCollapsible(this)">
-                                <span><strong>MKT1 - ${causa} (${count})</strong></span>
-                                <span class="arrow">▼</span>
-                            </div>
-                            <div class="collapsible-content">
-                                <div class="cause-item">
-                                    <div class="cause-title">${causa} <span class="cause-count">${count}</span></div>
-                                    <div class="cause-details">
-                                        ${descripcion}<br>
-                                        <a onclick="openModal('${causa}', 'MKT1 - ${causa} (${count})', datosCompletos['${causa}'])">Ver registros (${count})</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    `;
-                    
-                    container.innerHTML += html;
-                }
-            });
-        }
-
-        function getDescription(causa) {
-            const descriptions = {
-                'Desistido': 'Cliente decidió retirarse del proyecto o servicio.',
-                'Ghosting': 'Cliente desapareció sin comunicación o respuesta.',
-                'Descontento servicio': 'Cliente insatisfecho con la calidad del servicio.',
-                'Baja': 'Cliente solicitó cancelación del servicio.',
-                'Baja autónomo': 'Cliente cerró su negocio o se dio de baja como autónomo.',
-                'Baja - Cierre de negocio': 'El negocio fue cerrado.',
-                'Baja - Desinterés del cliente': 'Cliente perdió interés en continuar.',
-                'Pago IGIC': 'No realizó el pago del IGIC.',
-                'Baja - Imposibilidad subvención': 'No pudo continuar por restricciones de subvención.',
-                'Baja - Atención recibida': 'Insatisfacción con la atención recibida.',
-                'Dificultad con portal gestión': 'Dificultad para usar la plataforma de gestión.',
-                'Otra': 'Otras causas no categorizadas.'
-            };
-            return descriptions[causa] || 'Causa pendiente de clasificar.';
-        }
-
         function switchTab(tabName) {
-            // Ocultar todos los tabs
             const tabs = document.querySelectorAll('.tab-content');
             tabs.forEach(tab => tab.classList.remove('active'));
             
-            // Desactivar todos los botones
             const buttons = document.querySelectorAll('.tab-btn');
             buttons.forEach(btn => btn.classList.remove('active'));
             
-            // Mostrar el tab seleccionado
             const selectedTab = document.getElementById(tabName);
             if (selectedTab) {
                 selectedTab.classList.add('active');
             }
             
-            // Activar el botón clickeado usando event.currentTarget
             if (event && event.currentTarget) {
                 event.currentTarget.classList.add('active');
+            }
+
+            // Inicializar gráficos cuando se abre la pestaña de gráficos
+            if (tabName === 'tabGraficos') {
+                setTimeout(() => {
+                    initMKT1CausesChart();
+                    initPC1CausesChart();
+                    initMKT2CausesChart();
+                }, 100);
+            }
+
+            // Llenar tabla de bajas sin fecha
+            if (tabName === 'tabBajasSinFecha') {
+                setTimeout(() => {
+                    llenarTablaBajas();
+                }, 100);
             }
         }
 
@@ -726,67 +672,269 @@
             content.classList.toggle('active');
         }
 
-        function openModal(titulo, modalTitle, data) {
-            document.getElementById('modalTitle').textContent = modalTitle;
-            const tbody = document.getElementById('modalTableBody');
-            tbody.innerHTML = '';
+        function initMKT1CausesChart() {
+            const ctx = document.getElementById('mkt1CausesChart');
+            if (!ctx) return;
             
-            data.forEach(row => {
-                const tr = document.createElement('tr');
-                tr.innerHTML = `
-                    <td class="object-name">${row.nombre}</td>
-                    <td class="comments-text">${row.comentario}</td>
-                `;
-                tbody.appendChild(tr);
+            const totalAllMemories = 696;
+            const mkt1Data = [15, 12, 10, 6, 4];
+            const labels = [
+                'Desistido',
+                'Ghosting',
+                'Baja',
+                'Descontento servicio',
+                'Otras causas'
+            ];
+            
+            // Calcular porcentajes
+            const percentages = mkt1Data.map(val => ((val / totalAllMemories) * 100).toFixed(1));
+            const labelsWithPercent = labels.map((label, idx) => `${label} ${percentages[idx]}%`);
+            
+            const data = {
+                labels: labelsWithPercent,
+                datasets: [{
+                    data: mkt1Data,
+                    backgroundColor: [
+                        '#667eea',
+                        '#764ba2',
+                        '#4facfe',
+                        '#43e97b'
+                    ],
+                    borderColor: '#fff',
+                    borderWidth: 2
+                }]
+            };
+            
+            new Chart(ctx, {
+                type: 'doughnut',
+                data: data,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'right',
+                            labels: {
+                                font: {
+                                    size: 12,
+                                    family: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto",
+                                    weight: '600'
+                                },
+                                padding: 15,
+                                usePointStyle: true,
+                                pointStyle: 'circle'
+                            }
+                        },
+                        tooltip: {
+                            backgroundColor: 'rgba(0,0,0,0.8)',
+                            padding: 12,
+                            titleFont: { size: 14, weight: 'bold' },
+                            bodyFont: { size: 13 },
+                            callbacks: {
+                                label: function(context) {
+                                    const value = context.parsed;
+                                    const totalPercent = ((value / totalAllMemories) * 100).toFixed(1);
+                                    return value + ' registros | Del total: ' + totalPercent + '%';
+                                }
+                            }
+                        }
+                    }
+                }
             });
-            
-            document.getElementById('recordsModal').classList.add('active');
         }
 
-        function closeModal() {
-            document.getElementById('recordsModal').classList.remove('active');
-        }
-
-        function openRatificacionesModal(motivo, modalTitle, data) {
-            document.getElementById('ratificacionesModalTitle').textContent = modalTitle;
-            const tbody = document.getElementById('ratificacionesModalTableBody');
-            tbody.innerHTML = '';
+        function initPC1CausesChart() {
+            const ctx = document.getElementById('pc1CausesChart');
+            if (!ctx) return;
             
-            data.forEach(row => {
-                const statusClass = row.estado === 'CADUCADA' ? 'status-caducada' : 'status-riesgo';
-                const statusText = row.estado === 'CADUCADA' ? 'CADUCADA' : 'EN RIESGO';
-                
-                const tr = document.createElement('tr');
-                tr.innerHTML = `
-                    <td class="object-name">${row.nombre}</td>
-                    <td>${row.fecha_caducidad}</td>
-                    <td><span class="${statusClass}">${statusText}</span></td>
-                `;
-                tbody.appendChild(tr);
+            const totalAllMemories = 696;
+            const pc1Data = [79, 43, 29, 24, 12, 41];
+            const labels = [
+                'Ghosting',
+                'Baja sin motivo',
+                'Pago IGIC + Falta de pago',
+                'Desistido',
+                'Descontento gestión PC',
+                'Otros'
+            ];
+            
+            // Calcular porcentajes
+            const percentages = pc1Data.map(val => ((val / totalAllMemories) * 100).toFixed(1));
+            const labelsWithPercent = labels.map((label, idx) => `${label} ${percentages[idx]}%`);
+            
+            const data = {
+                labels: labelsWithPercent,
+                datasets: [{
+                    data: pc1Data,
+                    backgroundColor: [
+                        '#764ba2',
+                        '#f093fb',
+                        '#4facfe',
+                        '#00f2fe',
+                        '#43e97b',
+                        '#fa709a'
+                    ],
+                    borderColor: '#fff',
+                    borderWidth: 2
+                }]
+            };
+            
+            new Chart(ctx, {
+                type: 'doughnut',
+                data: data,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'right',
+                            labels: {
+                                font: {
+                                    size: 12,
+                                    family: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto",
+                                    weight: '600'
+                                },
+                                padding: 15,
+                                usePointStyle: true,
+                                pointStyle: 'circle'
+                            }
+                        },
+                        tooltip: {
+                            backgroundColor: 'rgba(0,0,0,0.8)',
+                            padding: 12,
+                            titleFont: { size: 14, weight: 'bold' },
+                            bodyFont: { size: 13 },
+                            callbacks: {
+                                label: function(context) {
+                                    const value = context.parsed;
+                                    const totalPercent = ((value / totalAllMemories) * 100).toFixed(1);
+                                    return value + ' registros | Del total: ' + totalPercent + '%';
+                                }
+                            }
+                        }
+                    }
+                }
             });
+        }
+
+        function initMKT2CausesChart() {
+            const ctx = document.getElementById('mkt2CausesChart');
+            if (!ctx) return;
             
-            document.getElementById('ratificacionesModal').classList.add('active');
+            const totalAllMemories = 696;
+            const mkt2Data = [46, 39, 25, 20, 11, 10, 5];
+            const labels = [
+                'Ghosting',
+                'Pendiente firma',
+                'Baja',
+                'Sin evidencia',
+                'Baja autónomo',
+                'Desistido',
+                'Otra'
+            ];
+            
+            // Calcular porcentajes
+            const percentages = mkt2Data.map(val => ((val / totalAllMemories) * 100).toFixed(1));
+            const labelsWithPercent = labels.map((label, idx) => `${label} ${percentages[idx]}%`);
+            
+            const data = {
+                labels: labelsWithPercent,
+                datasets: [{
+                    data: mkt2Data,
+                    backgroundColor: [
+                        '#f093fb',
+                        '#4facfe',
+                        '#00f2fe',
+                        '#43e97b',
+                        '#fa709a',
+                        '#fee140',
+                        '#ff6b6b'
+                    ],
+                    borderColor: '#fff',
+                    borderWidth: 2
+                }]
+            };
+            
+            new Chart(ctx, {
+                type: 'doughnut',
+                data: data,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'right',
+                            labels: {
+                                font: {
+                                    size: 12,
+                                    family: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto",
+                                    weight: '600'
+                                },
+                                padding: 15,
+                                usePointStyle: true,
+                                pointStyle: 'circle'
+                            }
+                        },
+                        tooltip: {
+                            backgroundColor: 'rgba(0,0,0,0.8)',
+                            padding: 12,
+                            titleFont: { size: 14, weight: 'bold' },
+                            bodyFont: { size: 13 },
+                            callbacks: {
+                                label: function(context) {
+                                    const value = context.parsed;
+                                    const totalPercent = ((value / totalAllMemories) * 100).toFixed(1);
+                                    return value + ' registros | Del total: ' + totalPercent + '%';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
         }
 
-        function closeRatificacionesModal() {
-            document.getElementById('ratificacionesModal').classList.remove('active');
-        }
-
-        window.onclick = function(event) {
-            const modal = document.getElementById('recordsModal');
-            const ratModal = document.getElementById('ratificacionesModal');
-            if (event.target == modal) {
-                closeModal();
+        function llenarTablaBajas() {
+            const mktData = datossinFechaBajaDefinitivo['MKT'];
+            const pcData = datossinFechaBajaDefinitivo['PC'];
+            
+            const tbodyMKT = document.getElementById('tabla_mkt_bajas');
+            const tbodyPC = document.getElementById('tabla_pc_bajas');
+            
+            if (tbodyMKT && tbodyMKT.children.length === 0) {
+                mktData.forEach(proyecto => {
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `<td style="padding: 6px; border-bottom: 1px solid #eee;">${proyecto.nombre}</td><td style="padding: 6px; border-bottom: 1px solid #eee;">${proyecto.fecha_caducidad}</td>`;
+                    tbodyMKT.appendChild(tr);
+                });
             }
-            if (event.target == ratModal) {
-                closeRatificacionesModal();
+            
+            if (tbodyPC && tbodyPC.children.length === 0) {
+                pcData.forEach(proyecto => {
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `<td style="padding: 6px; border-bottom: 1px solid #eee;">${proyecto.nombre}</td><td style="padding: 6px; border-bottom: 1px solid #eee;">${proyecto.fecha_caducidad}</td>`;
+                    tbodyPC.appendChild(tr);
+                });
             }
         }
 
-        // Inicializar
-        document.addEventListener('DOMContentLoaded', function() {
-            initializeCauses();
-        });
+        function switchBajasSinFecha(channel) {
+            const mktContent = document.getElementById('bajas_mkt_content');
+            const pcContent = document.getElementById('bajas_pc_content');
+            
+            if (channel === 'mkt') {
+                mktContent.classList.add('active');
+                pcContent.classList.remove('active');
+            } else {
+                pcContent.classList.add('active');
+                mktContent.classList.remove('active');
+            }
+            
+            if (event && event.currentTarget) {
+                const buttons = event.currentTarget.parentElement.querySelectorAll('.mem-btn');
+                buttons.forEach(btn => btn.classList.remove('active'));
+                event.currentTarget.classList.add('active');
+            }
+        }
     </script>
 </body>
 </html>
