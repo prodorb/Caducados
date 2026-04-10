@@ -556,7 +556,7 @@
                             <div id="mem1_contacto_mkt" class="mem-content active">
                                 <div style="margin-bottom: 20px;">
                                     <div style="font-weight: 600; color: #667eea; font-size: 14px; margin-bottom: 15px; padding-bottom: 8px; border-bottom: 2px solid #e0e0e0;">🎯 MKT1 - CONTACTABILIDAD</div>
-                                    <div class="data-item">• <strong>Total clientes a contactar:</strong> 202</div>
+                                    <div class="data-item">• <strong>Total clientes a contactar:</strong> 0</div>
                                     <div class="data-item">• <strong>Clientes gestionados:</strong> 202 → 100%</div>
                                     <div class="data-item">• <strong>Clientes no gestionados:</strong> 0 → 0%</div>
                                     <div class="data-item" style="margin-top: 12px; padding: 12px; background: #f0f4ff; border-left: 4px solid #667eea; border-radius: 4px;">
@@ -569,7 +569,7 @@
                             <div id="mem1_contacto_pc" class="mem-content">
                                 <div style="margin-bottom: 20px;">
                                     <div style="font-weight: 600; color: #667eea; font-size: 14px; margin-bottom: 15px; padding-bottom: 8px; border-bottom: 2px solid #e0e0e0;">💻 PC1 - CONTACTABILIDAD</div>
-                                    <div class="data-item">• <strong>Total clientes a contactar:</strong> 228</div>
+                                    <div class="data-item">• <strong>Total clientes a contactar:</strong> 0</div>
                                     <div class="data-item">• <strong>Clientes gestionados:</strong> 228 → 100%</div>
                                     <div class="data-item">• <strong>Clientes no gestionados:</strong> 0 → 0%</div>
                                     <div class="data-item" style="margin-top: 12px; padding: 12px; background: #f0f4ff; border-left: 4px solid #667eea; border-radius: 4px;">
@@ -657,171 +657,209 @@
 
                                 <div style="margin-bottom: 20px;">
                                     <div style="font-weight: 600; color: #667eea; font-size: 14px; margin-bottom: 10px;">🔹 MKT1 - CAUSAS (202 registros)</div>
+                                    
+                                    <!-- DESISTIDO -->
                                     <div class="collapsible-section">
                                         <div class="collapsible-header" onclick="toggleCollapsible(this)">
-                                            <span><strong>Desistido (78)</strong></span>
+                                            <span><strong>Desistido (77)</strong></span>
                                             <span class="arrow">▼</span>
                                         </div>
                                         <div class="collapsible-content">
                                             <div class="cause-item">
-                                                <div class="cause-title">Desistido <span class="cause-count">78</span></div>
+                                                <div class="cause-title">Desistido <span class="cause-count">77</span></div>
                                                 <div class="cause-details">
-                                                    Cliente decidió retirarse del proyecto.<br>
-                                                    <a onclick="openModal('Desistido', 'MKT1 - Desistido (78)', datosCompletos['Desistido'])">Ver registros (78)</a>
+                                                    Cliente decidió retirarse del proyecto sin completar la memoria.
+                                                    <br><br>
+                                                    <button onclick="verProyectosCausa('Desistido')" style="background: #667eea; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; font-weight: 600; font-size: 14px;">👁️ Ver Proyectos (77)</button>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
 
+                                    <!-- BAJA -->
                                     <div class="collapsible-section">
                                         <div class="collapsible-header" onclick="toggleCollapsible(this)">
-                                            <span><strong>Ghosting (49)</strong></span>
+                                            <span><strong>Baja (54)</strong></span>
                                             <span class="arrow">▼</span>
                                         </div>
                                         <div class="collapsible-content">
                                             <div class="cause-item">
-                                                <div class="cause-title">Ghosting <span class="cause-count">49</span></div>
+                                                <div class="cause-title">Baja <span class="cause-count">54</span></div>
                                                 <div class="cause-details">
-                                                    Cliente desapareció sin respuesta.<br>
-                                                    <a onclick="openModal('Ghosting', 'MKT1 - Ghosting (49)', datosCompletos['Ghosting'])">Ver registros (49)</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="collapsible-section">
-                                        <div class="collapsible-header" onclick="toggleCollapsible(this)">
-                                            <span><strong>Baja (46)</strong></span>
-                                            <span class="arrow">▼</span>
-                                        </div>
-                                        <div class="collapsible-content">
-                                            <div class="cause-item">
-                                                <div class="cause-title">Baja <span class="cause-count">46</span></div>
-                                                <div class="cause-details">
-                                                    Todos los registros que contienen "Baja" (sin Desistido, sin Pendiente firma)<br>
+                                                    Proyectos dados de baja por diferentes razones.
                                                     
                                                     <!-- Subcausas de Baja -->
                                                     <div style="margin-top: 12px; padding-left: 15px; border-left: 2px solid #667eea;">
                                                         <div style="font-weight: 600; color: #333; font-size: 12px; margin-bottom: 10px;">📌 Subcausas:</div>
                                                         
                                                         <div style="margin-bottom: 8px;">
-                                                            <strong>Descontento servicio:</strong> 7 registros
-                                                            <a onclick="openModal('Baja - Descontento servicio', 'MKT1 - Baja / Descontento servicio (7)', datosBaja['Descontento servicio'])" style="margin-left: 8px; cursor: pointer; color: #667eea; text-decoration: underline;">Ver</a>
+                                                            <strong style="cursor: pointer; color: #667eea;" onclick="verProyectosCausa('Baja', 'Descontento servicio')">Descontento servicio: 10 registros</strong>
                                                         </div>
                                                         
                                                         <div style="margin-bottom: 8px;">
-                                                            <strong>Baja autónomo:</strong> 5 registros
-                                                            <a onclick="openModal('Baja - Baja autónomo', 'MKT1 - Baja / Baja autónomo (5)', datosBaja['Baja autónomo'])" style="margin-left: 8px; cursor: pointer; color: #667eea; text-decoration: underline;">Ver</a>
+                                                            <strong style="cursor: pointer; color: #667eea;" onclick="verProyectosCausa('Baja', 'Sin motivo')">Sin motivo: 7 registros</strong>
                                                         </div>
                                                         
                                                         <div style="margin-bottom: 8px;">
-                                                            <strong>Sin interés en proyecto:</strong> 4 registros
-                                                            <a onclick="openModal('Baja - Sin interés', 'MKT1 - Baja / Sin interés en proyecto (4)', datosBaja['Sin interés en proyecto'])" style="margin-left: 8px; cursor: pointer; color: #667eea; text-decoration: underline;">Ver</a>
+                                                            <strong style="cursor: pointer; color: #667eea;" onclick="verProyectosCausa('Baja', 'Baja autónomo')">Baja autónomo: 7 registros</strong>
                                                         </div>
                                                         
                                                         <div style="margin-bottom: 8px;">
-                                                            <strong>Cierre de negocio:</strong> 4 registros
-                                                            <a onclick="openModal('Baja - Cierre de negocio', 'MKT1 - Baja / Cierre de negocio (4)', datosBaja['Cierre de negocio'])" style="margin-left: 8px; cursor: pointer; color: #667eea; text-decoration: underline;">Ver</a>
+                                                            <strong style="cursor: pointer; color: #667eea;" onclick="verProyectosCausa('Baja', 'Cierre de negocio')">Cierre de negocio: 5 registros</strong>
                                                         </div>
                                                         
                                                         <div style="margin-bottom: 8px;">
-                                                            <strong>Descontento con servicio:</strong> 4 registros
-                                                            <a onclick="openModal('Baja - Descontento', 'MKT1 - Baja / Descontento con servicio (4)', datosBaja['Descontento con servicio'])" style="margin-left: 8px; cursor: pointer; color: #667eea; text-decoration: underline;">Ver</a>
+                                                            <strong style="cursor: pointer; color: #667eea;" onclick="verProyectosCausa('Baja', 'Sin interés en proyecto')">Sin interés en proyecto: 4 registros</strong>
                                                         </div>
                                                         
                                                         <div style="margin-bottom: 8px;">
-                                                            <strong>Sin interés en el proyecto:</strong> 2 registros
-                                                            <a onclick="openModal('Baja - Sin interés', 'MKT1 - Baja / Sin interés en el proyecto (2)', datosBaja['Sin interés en el proyecto'])" style="margin-left: 8px; cursor: pointer; color: #667eea; text-decoration: underline;">Ver</a>
+                                                            <strong style="cursor: pointer; color: #667eea;" onclick="verProyectosCausa('Baja', 'Descontento con servicio')">Descontento con servicio: 4 registros</strong>
                                                         </div>
                                                         
                                                         <div style="margin-bottom: 8px;">
-                                                            <strong>Imposibilidad seguir con subvención:</strong> 2 registros
-                                                            <a onclick="openModal('Baja - Imposibilidad subvención', 'MKT1 - Baja / Imposibilidad subvención (2)', datosBaja['Imposibilidad seguir con subvención'])" style="margin-left: 8px; cursor: pointer; color: #667eea; text-decoration: underline;">Ver</a>
+                                                            <strong style="cursor: pointer; color: #667eea;" onclick="verProyectosCausa('Baja', 'Sin interés en el proyecto')">Sin interés en el proyecto: 2 registros</strong>
                                                         </div>
                                                         
                                                         <div style="margin-bottom: 8px;">
-                                                            <strong>Sin especificar:</strong> 2 registros
-                                                            <a onclick="openModal('Baja - Sin especificar', 'MKT1 - Baja / Sin especificar (2)', datosBaja['Sin especificar'])" style="margin-left: 8px; cursor: pointer; color: #667eea; text-decoration: underline;">Ver</a>
+                                                            <strong style="cursor: pointer; color: #667eea;" onclick="verProyectosCausa('Baja', 'Imposibilidad seguir con subvención')">Imposibilidad seguir con subvención: 2 registros</strong>
                                                         </div>
                                                         
                                                         <div style="margin-bottom: 8px;">
-                                                            <strong>Atención recibida:</strong> 2 registros
-                                                            <a onclick="openModal('Baja - Atención recibida', 'MKT1 - Baja / Atención recibida (2)', datosBaja['Atención recibida'])" style="margin-left: 8px; cursor: pointer; color: #667eea; text-decoration: underline;">Ver</a>
+                                                            <strong style="cursor: pointer; color: #667eea;" onclick="verProyectosCausa('Baja', 'Atención recibida')">Atención recibida: 2 registros</strong>
                                                         </div>
-                                                        
-                                                        <div style="margin-bottom: 8px;">
-                                                            <strong>Otras subcausas (baja de autónomo, no indica motivo, gestión PC, etc.):</strong> 14 registros
-                                                        </div>
+                                                    </div>
+                                                    <div style="margin-top: 15px;">
+                                                        <button onclick="verProyectosCausa('Baja')" style="background: #667eea; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; font-weight: 600; font-size: 14px;">👁️ Ver Proyectos (54)</button>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
 
+                                    <!-- GHOSTING -->
                                     <div class="collapsible-section">
                                         <div class="collapsible-header" onclick="toggleCollapsible(this)">
-                                            <span><strong>Otros (29)</strong></span>
+                                            <span><strong>Ghosting (51)</strong></span>
                                             <span class="arrow">▼</span>
                                         </div>
                                         <div class="collapsible-content">
                                             <div class="cause-item">
-                                                <div class="cause-title">Otros <span class="cause-count">29</span></div>
+                                                <div class="cause-title">Ghosting <span class="cause-count">51</span></div>
                                                 <div class="cause-details">
-                                                    Otras causas de caducidad no clasificadas en las categorías anteriores.<br>
-                                                    
-                                                    <!-- Subcausas de Otros -->
-                                                    <div style="margin-top: 12px; padding-left: 15px; border-left: 2px solid #667eea;">
-                                                        <div style="font-weight: 600; color: #333; font-size: 12px; margin-bottom: 10px;">📌 Subcausas:</div>
-                                                        
-                                                        <div style="margin-bottom: 8px;">
-                                                            <strong>Cambio de servicio:</strong> 8 registros
-                                                            <a onclick="openModal('Otros - Cambio de servicio', 'MKT1 - Otros / Cambio de servicio (8)', datosCompletos['Cambio de servicio'])" style="margin-left: 8px; cursor: pointer; color: #667eea; text-decoration: underline;">Ver</a>
-                                                        </div>
-                                                        
-                                                        <div style="margin-bottom: 8px;">
-                                                            <strong>Proyecto no apto para ejecución:</strong> 6 registros
-                                                            <a onclick="openModal('Otros - No apto', 'MKT1 - Otros / Proyecto no apto para ejecución (6)', datosCompletos['Proyecto no apto'])" style="margin-left: 8px; cursor: pointer; color: #667eea; text-decoration: underline;">Ver</a>
-                                                        </div>
-                                                        
-                                                        <div style="margin-bottom: 8px;">
-                                                            <strong>Error técnico ORBIDI:</strong> 5 registros
-                                                            <a onclick="openModal('Otros - Error ORBIDI', 'MKT1 - Otros / Error técnico ORBIDI (5)', datosCompletos['Error técnico ORBIDI'])" style="margin-left: 8px; cursor: pointer; color: #667eea; text-decoration: underline;">Ver</a>
-                                                        </div>
-                                                        
-                                                        <div style="margin-bottom: 8px;">
-                                                            <strong>Bloqueo de memoria:</strong> 5 registros
-                                                            <a onclick="openModal('Otros - Bloqueo', 'MKT1 - Otros / Bloqueo de memoria (5)', datosCompletos['Bloqueo memoria'])" style="margin-left: 8px; cursor: pointer; color: #667eea; text-decoration: underline;">Ver</a>
-                                                        </div>
-                                                        
-                                                        <div style="margin-bottom: 8px;">
-                                                            <strong>Inconveniente con plataforma:</strong> 3 registros
-                                                            <a onclick="openModal('Otros - Plataforma', 'MKT1 - Otros / Inconveniente con plataforma (3)', datosCompletos['Plataforma'])" style="margin-left: 8px; cursor: pointer; color: #667eea; text-decoration: underline;">Ver</a>
-                                                        </div>
-                                                        
-                                                        <div style="margin-bottom: 8px;">
-                                                            <strong>Otros motivos no especificados:</strong> 2 registros
-                                                        </div>
-                                                    </div>
+                                                    Cliente desapareció sin respuesta. No volvió a contactarse después de solicitadas acciones necesarias para completar la memoria.
+                                                    <br><br>
+                                                    <button onclick="verProyectosCausa('Ghosting')" style="background: #667eea; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; font-weight: 600; font-size: 14px;">👁️ Ver Proyectos (51)</button>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
 
+                                    <!-- DIFICULTAD EN PLATAFORMA -->
                                     <div class="collapsible-section">
                                         <div class="collapsible-header" onclick="toggleCollapsible(this)">
-                                            <span><strong>5.1 Bajas sin fecha definitiva (101)</strong></span>
+                                            <span><strong>Dificultad en plataforma (5)</strong></span>
                                             <span class="arrow">▼</span>
                                         </div>
                                         <div class="collapsible-content">
                                             <div class="cause-item">
-                                                <div class="cause-title">Bajas sin fecha definitiva <span class="cause-count">101</span></div>
+                                                <div class="cause-title">Dificultad en plataforma <span class="cause-count">5</span></div>
                                                 <div class="cause-details">
-                                                    Proyectos con baja pero sin fecha definitiva especificada.<br>
+                                                    Problemas técnicos o dificultades con la plataforma de firma y gestión que impidieron completar la memoria.
+                                                    <br><br>
+                                                    <button onclick="verProyectosCausa('Dificultad en plataforma')" style="background: #667eea; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; font-weight: 600; font-size: 14px;">👁️ Ver Proyectos (5)</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- CALIDAD DEL PRODUCTO -->
+                                    <div class="collapsible-section">
+                                        <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                                            <span><strong>Calidad del producto (4)</strong></span>
+                                            <span class="arrow">▼</span>
+                                        </div>
+                                        <div class="collapsible-content">
+                                            <div class="cause-item">
+                                                <div class="cause-title">Calidad del producto <span class="cause-count">4</span></div>
+                                                <div class="cause-details">
+                                                    Cliente descontento con la calidad del producto o servicio entregado.
+                                                    <br><br>
+                                                    <button onclick="verProyectosCausa('Calidad del producto')" style="background: #667eea; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; font-weight: 600; font-size: 14px;">👁️ Ver Proyectos (5)</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- NO REALIZÓ PAGO IGIC -->
+                                    <div class="collapsible-section">
+                                        <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                                            <span><strong>No realizó pago IGIC (6)</strong></span>
+                                            <span class="arrow">▼</span>
+                                        </div>
+                                        <div class="collapsible-content">
+                                            <div class="cause-item">
+                                                <div class="cause-title">No realizó pago IGIC <span class="cause-count">6</span></div>
+                                                <div class="cause-details">
+                                                    Cliente no realizó el pago de IGIC requerido para continuar con la tramitación.
+                                                    <br><br>
+                                                    <button onclick="verProyectosCausa('No realizó pago IGIC')" style="background: #667eea; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; font-weight: 600; font-size: 14px;">👁️ Ver Proyectos (6)</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- PROYECTO NO APTO PARA EJECUCIÓN -->
+                                    <div class="collapsible-section">
+                                        <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                                            <span><strong>Proyecto no apto para ejecución (3)</strong></span>
+                                            <span class="arrow">▼</span>
+                                        </div>
+                                        <div class="collapsible-content">
+                                            <div class="cause-item">
+                                                <div class="cause-title">Proyecto no apto para ejecución <span class="cause-count">3</span></div>
+                                                <div class="cause-details">
+                                                    Proyecto que no cumple con los requisitos técnicos necesarios para su ejecución.
+                                                    <br><br>
+                                                    <button onclick="verProyectosCausa('Proyecto no apto para ejecución')" style="background: #667eea; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; font-weight: 600; font-size: 14px;">👁️ Ver Proyectos (3)</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- GESTIÓN PC -->
+                                    <div class="collapsible-section">
+                                        <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                                            <span><strong>Gestión PC (2)</strong></span>
+                                            <span class="arrow">▼</span>
+                                        </div>
+                                        <div class="collapsible-content">
+                                            <div class="cause-item">
+                                                <div class="cause-title">Gestión PC <span class="cause-count">2</span></div>
+                                                <div class="cause-details">
+                                                    Problemas relacionados con la gestión de equipos PC (retrasos en entrega, especificaciones incorrectas, etc.).
+                                                    <br><br>
+                                                    <button onclick="verProyectosCausa('Gestión PC')" style="background: #667eea; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; font-weight: 600; font-size: 14px;">👁️ Ver Proyectos (2)</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- BAJAS SIN FECHA DEFINITIVA -->
+                                    <div class="collapsible-section">
+                                        <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                                            <span><strong>5.1 Bajas sin fecha definitiva (98)</strong></span>
+                                            <span class="arrow">▼</span>
+                                        </div>
+                                        <div class="collapsible-content">
+                                            <div class="cause-item">
+                                                <div class="cause-title">Bajas sin fecha definitiva <span class="cause-count">98</span></div>
+                                                <div class="cause-details">
+                                                    Proyectos dados de baja pero sin fecha de baja definitiva especificada.
                                                     
                                                     <!-- Toggle MKT/PC para Bajas sin fecha -->
                                                     <div class="mem-toggle" style="margin-bottom: 15px; margin-top: 15px;">
                                                         <button class="mem-btn active" onclick="switchBajasSinFecha('mkt')">🎯 MKT (37)</button>
-                                                        <button class="mem-btn" onclick="switchBajasSinFecha('pc')">💻 PC (64)</button>
+                                                        <button class="mem-btn" onclick="switchBajasSinFecha('pc')">💻 PC (61)</button>
                                                     </div>
 
                                                     <!-- MKT Bajas sin fecha -->
@@ -874,15 +912,16 @@
                                     <div style="font-weight: 600; color: #667eea; font-size: 14px; margin-bottom: 10px;">🔹 PC1 - CAUSAS (228 registros)</div>
                                     <div class="collapsible-section">
                                         <div class="collapsible-header" onclick="toggleCollapsible(this)">
-                                            <span><strong>Ghosting (79)</strong></span>
+                                            <span><strong>Ghosting (80)</strong></span>
                                             <span class="arrow">▼</span>
                                         </div>
                                         <div class="collapsible-content">
                                             <div class="cause-item">
-                                                <div class="cause-title">Ghosting <span class="cause-count">79</span></div>
+                                                <div class="cause-title">Ghosting <span class="cause-count">80</span></div>
                                                 <div class="cause-details">
-                                                    Cliente desapareció sin respuesta.<br>
-                                                    <a onclick="openModal('Ghosting PC', 'PC1 - Ghosting (79)', datosPC1['Ghosting'])">Ver registros (79)</a>
+                                                    Cliente desapareció sin respuesta. No volvió a contactarse después de solicitadas acciones necesarias para completar la memoria.
+                                                    <br><br>
+                                                    <button onclick="verProyectosPC('Ghosting')" style="background: #667eea; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; font-weight: 600; font-size: 14px;">👁️ Ver Proyectos (80)</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -890,15 +929,41 @@
 
                                     <div class="collapsible-section">
                                         <div class="collapsible-header" onclick="toggleCollapsible(this)">
-                                            <span><strong>Baja sin motivo (43)</strong></span>
+                                            <span><strong>Baja (63)</strong></span>
                                             <span class="arrow">▼</span>
                                         </div>
                                         <div class="collapsible-content">
                                             <div class="cause-item">
-                                                <div class="cause-title">Baja sin motivo <span class="cause-count">43</span></div>
+                                                <div class="cause-title">Baja <span class="cause-count">62</span></div>
                                                 <div class="cause-details">
-                                                    Baja sin especificar causa.<br>
-                                                    <a onclick="openModal('Baja sin motivo', 'PC1 - Baja sin motivo (43)', datosPC1['Baja sin motivo'])">Ver registros (43)</a>
+                                                    Proyectos dados de baja por diferentes motivos.
+                                                    <br><br>
+                                                    💡 <strong>Subcausas:</strong>
+                                                    <div style="margin-top: 10px;">
+                                                        <div style="margin-bottom: 8px;">
+                                                            <strong style="cursor: pointer; color: #667eea;" onclick="verProyectosPC('Baja', 'Baja de autónomo')">Baja de autónomo: 29 registros</strong>
+                                                        </div>
+                                                        <div style="margin-bottom: 8px;">
+                                                            <strong style="cursor: pointer; color: #667eea;" onclick="verProyectosPC('Baja', 'Descontento servicio')">Descontento servicio: 15 registros</strong>
+                                                        </div>
+                                                        <div style="margin-bottom: 8px;">
+                                                            <strong style="cursor: pointer; color: #667eea;" onclick="verProyectosPC('Baja', 'Sin motivo')">Sin motivo: 7 registros</strong>
+                                                        </div>
+                                                        <div style="margin-bottom: 8px;">
+                                                            <strong style="cursor: pointer; color: #667eea;" onclick="verProyectosPC('Baja', 'Sin interés en proyecto')">Sin interés en proyecto: 4 registros</strong>
+                                                        </div>
+                                                        <div style="margin-bottom: 8px;">
+                                                            <strong style="cursor: pointer; color: #667eea;" onclick="verProyectosPC('Baja', 'Gestión Pc')">Gestión PC: 3 registros</strong>
+                                                        </div>
+                                                        <div style="margin-bottom: 8px;">
+                                                            <strong style="cursor: pointer; color: #667eea;" onclick="verProyectosPC('Baja', 'Motivos personales')">Motivos personales: 2 registros</strong>
+                                                        </div>
+                                                        <div style="margin-bottom: 8px;">
+                                                            <strong style="cursor: pointer; color: #667eea;" onclick="verProyectosPC('Baja', 'Cierre de negocio')">Cierre de negocio: 2 registros</strong>
+                                                        </div>
+                                                    </div>
+                                                    <br>
+                                                    <button onclick="verProyectosPC('Baja')" style="background: #667eea; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; font-weight: 600; font-size: 14px;">👁️ Ver Proyectos (63)</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -906,15 +971,16 @@
 
                                     <div class="collapsible-section">
                                         <div class="collapsible-header" onclick="toggleCollapsible(this)">
-                                            <span><strong>Pago IGIC + Falta de pago (29)</strong></span>
+                                            <span><strong>Desistido (21)</strong></span>
                                             <span class="arrow">▼</span>
                                         </div>
                                         <div class="collapsible-content">
                                             <div class="cause-item">
-                                                <div class="cause-title">Pago IGIC + Falta de pago <span class="cause-count">29</span></div>
+                                                <div class="cause-title">Desistido <span class="cause-count">20</span></div>
                                                 <div class="cause-details">
-                                                    No realizó pago IGIC/importe.<br>
-                                                    <a onclick="openModal('Pago IGIC + Falta de pago', 'PC1 - Pago IGIC + Falta de pago (29)', datosPC1['Pago IGIC + Falta de pago'])">Ver registros (29)</a>
+                                                    Cliente decidió no continuar con el proyecto.
+                                                    <br><br>
+                                                    <button onclick="verProyectosPC('Desistido')" style="background: #667eea; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; font-weight: 600; font-size: 14px;">👁️ Ver Proyectos (21)</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -922,15 +988,16 @@
 
                                     <div class="collapsible-section">
                                         <div class="collapsible-header" onclick="toggleCollapsible(this)">
-                                            <span><strong>Desistido (24)</strong></span>
+                                            <span><strong>No realizó pago Importe (20)</strong></span>
                                             <span class="arrow">▼</span>
                                         </div>
                                         <div class="collapsible-content">
                                             <div class="cause-item">
-                                                <div class="cause-title">Desistido <span class="cause-count">24</span></div>
+                                                <div class="cause-title">No realizó pago Importe <span class="cause-count">20</span></div>
                                                 <div class="cause-details">
-                                                    Cliente decidió no continuar.<br>
-                                                    <a onclick="openModal('Desistido PC', 'PC1 - Desistido (24)', datosPC1['Desistido'])">Ver registros (24)</a>
+                                                    Cliente no realizó el pago del importe extra solicitado.
+                                                    <br><br>
+                                                    <button onclick="verProyectosPC('No realizó pago Importe')" style="background: #667eea; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; font-weight: 600; font-size: 14px;">👁️ Ver Proyectos (20)</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -938,15 +1005,101 @@
 
                                     <div class="collapsible-section">
                                         <div class="collapsible-header" onclick="toggleCollapsible(this)">
-                                            <span><strong>Descontento gestión PC (12)</strong></span>
+                                            <span><strong>No realizó pago IGIC (18)</strong></span>
                                             <span class="arrow">▼</span>
                                         </div>
                                         <div class="collapsible-content">
                                             <div class="cause-item">
-                                                <div class="cause-title">Descontento gestión PC <span class="cause-count">12</span></div>
+                                                <div class="cause-title">No realizó pago IGIC <span class="cause-count">18</span></div>
                                                 <div class="cause-details">
-                                                    Problemas con entrega/gestión PC.<br>
-                                                    <a onclick="openModal('Descontento gestión PC', 'PC1 - Descontento gestión PC (12)', datosPC1['Descontento gestión PC'])">Ver registros (12)</a>
+                                                    Cliente no realizó el pago de IGIC requerido.
+                                                    <br><br>
+                                                    <button onclick="verProyectosPC('No realizó pago IGIC')" style="background: #667eea; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; font-weight: 600; font-size: 14px;">👁️ Ver Proyectos (18)</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="collapsible-section">
+                                        <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                                            <span><strong>Gestión PC (13)</strong></span>
+                                            <span class="arrow">▼</span>
+                                        </div>
+                                        <div class="collapsible-content">
+                                            <div class="cause-item">
+                                                <div class="cause-title">Gestión PC <span class="cause-count">13</span></div>
+                                                <div class="cause-details">
+                                                    Problemas relacionados con la gestión/entrega del equipo PC.
+                                                    <br><br>
+                                                    <button onclick="verProyectosPC('Gestión PC')" style="background: #667eea; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; font-weight: 600; font-size: 14px;">👁️ Ver Proyectos (13)</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="collapsible-section">
+                                        <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                                            <span><strong>Error de importe (10)</strong></span>
+                                            <span class="arrow">▼</span>
+                                        </div>
+                                        <div class="collapsible-content">
+                                            <div class="cause-item">
+                                                <div class="cause-title">Error de importe <span class="cause-count">10</span></div>
+                                                <div class="cause-details">
+                                                    Hubo error en el cálculo o asignación del importe.
+                                                    <br><br>
+                                                    <button onclick="verProyectosPC('Error de importe')" style="background: #667eea; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; font-weight: 600; font-size: 14px;">👁️ Ver Proyectos (10)</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="collapsible-section">
+                                        <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                                            <span><strong>Dificultad en plataforma (1)</strong></span>
+                                            <span class="arrow">▼</span>
+                                        </div>
+                                        <div class="collapsible-content">
+                                            <div class="cause-item">
+                                                <div class="cause-title">Dificultad en plataforma <span class="cause-count">1</span></div>
+                                                <div class="cause-details">
+                                                    Problemas técnicos con la plataforma de firma.
+                                                    <br><br>
+                                                    <button onclick="verProyectosPC('Dificultad en plataforma')" style="background: #667eea; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; font-weight: 600; font-size: 14px;">👁️ Ver Proyectos (1)</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="collapsible-section">
+                                        <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                                            <span><strong>Memoria 1 caducada (1)</strong></span>
+                                            <span class="arrow">▼</span>
+                                        </div>
+                                        <div class="collapsible-content">
+                                            <div class="cause-item">
+                                                <div class="cause-title">Memoria 1 caducada <span class="cause-count">1</span></div>
+                                                <div class="cause-details">
+                                                    La memoria 1 caducó antes de completarse.
+                                                    <br><br>
+                                                    <button onclick="verProyectosPC('Memoria 1 caducada')" style="background: #667eea; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; font-weight: 600; font-size: 14px;">👁️ Ver Proyectos (1)</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="collapsible-section">
+                                        <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                                            <span><strong>Sin evidencias (1)</strong></span>
+                                            <span class="arrow">▼</span>
+                                        </div>
+                                        <div class="collapsible-content">
+                                            <div class="cause-item">
+                                                <div class="cause-title">Sin evidencias <span class="cause-count">1</span></div>
+                                                <div class="cause-details">
+                                                    Falta de evidencias para completar la memoria.
+                                                    <br><br>
+                                                    <button onclick="verProyectosPC('Sin evidencias')" style="background: #667eea; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; font-weight: 600; font-size: 14px;">👁️ Ver Proyectos (1)</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -975,7 +1128,7 @@
                                     <div class="metrics-grid">
                                         <div class="metric-card">
                                             <div class="label">Caducadas por IGIC</div>
-                                            <div class="value">3</div>
+                                            <div class="value">6</div>
                                         </div>
                                     </div>
                                 </div>
@@ -988,7 +1141,7 @@
                                     <div class="metrics-grid">
                                         <div class="metric-card">
                                             <div class="label">Caducadas por IGIC</div>
-                                            <div class="value">34</div>
+                                            <div class="value">18</div>
                                         </div>
                                     </div>
                                 </div>
@@ -2069,10 +2222,38 @@
             }
         }
 
+
+        // DATOS DE DETALLE PARA CADA CAUSA DE MKT
+        const datosDetalleMKT = {"Desistido":[{"nombre":"MEM1 - WEB: Lonca Clinical Services SL","ops":"11/03 Cliente solicita baja en febrero 2025, por cierre negocio"}],"Baja":[{"nombre":"MEM1 - RRSS: HENRY DANIEL ENCALADA MANCHAY","ops":"11/03 - Se intentó contactar a cliente y este indicó Mire que dejamos de querer esto"}],"Ghosting":[{"nombre":"MEM1 - FACTURA: 321 GESTIO I SERVEIS SL","ops":"Proyecto con KO por solicitud de nuevo email que quedo pendiente de gestión."}],"Dificultad en plataforma":[{"nombre":"MEM1 - SEO: Fernando Gonzalez Lopez","ops":"Cliente tiene problemas con la plataforma"}],"Calidad del producto":[{"nombre":"MEM1 - RRSS: Juan José Páez Rojas","ops":"Cliente no le gusta el formato de la propuesta"}],"No realizó pago IGIC":[{"nombre":"MEM1 - RRSS: ZANETTA IRENE ZENNA","ops":"Cliente no realiza pago de IGIC"}],"Proyecto no apto para ejecución":[{"nombre":"MEM1 - SEO: CRISTOBAL REINOSO PORTAS","ops":"Se solicitó al cliente la web activa para poder avanzar"}],"Gestión PC":[{"nombre":"MEM1 - FACTURA: SIOSI PUNTO GRAFICO SL","ops":"Cliente se niega a firmar la memoria"}]};
+
+        function mostrarDetalleCausa(causa) {
+            const datos = datosDetalleMKT[causa] || [];
+            if (!datos || datos.length === 0) return;
+            
+            let html = '<table style="width:100%; border-collapse: collapse; font-size: 12px;"><thead><tr style="background: #f5f5f5;"><th style="border: 1px solid #ddd; padding: 8px; text-align: left;">Nombre del Objeto</th><th style="border: 1px solid #ddd; padding: 8px; text-align: left;">Comentarios OPS Tram</th></tr></thead><tbody>';
+            
+            datos.forEach(item => {
+                html += '<tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; word-break: break-word;">' + item.nombre + '</td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; word-break: break-word;">' + item.ops + '</td></tr>';
+            });
+            
+            html += '</tbody></table>';
+            return html;
+        }
+
         function toggleCollapsible(element) {
             element.classList.toggle('active');
             const content = element.nextElementSibling;
             content.classList.toggle('active');
+            
+            // Generar tabla si es necesario
+            const causaText = element.textContent.match(/(\w+(?:\s+\w+)*?)\s*\(/);
+            if (causaText) {
+                const causa = causaText[1];
+                const tablaDiv = content.querySelector('[id^="tabla-"]');
+                if (tablaDiv && !tablaDiv.innerHTML) {
+                    tablaDiv.innerHTML = mostrarDetalleCausa(causa);
+                }
+            }
         }
 
         function openModal(titulo, modalTitle, data) {
@@ -2150,17 +2331,20 @@
             if (!ctx) return;
             
             const totalAllMemories = 696;
-            // Desistido: 78, Ghosting: 49, Baja: 46, Otros: 29
-            const mkt1Data = [78, 49, 46, 29];
+            const mkt1Data = [77, 54, 51, 5, 4, 6, 3, 2];
             const labels = [
                 'Desistido',
-                'Ghosting',
                 'Baja',
-                'Otros'
+                'Ghosting',
+                'Dificultad en plataforma',
+                'Calidad del producto',
+                'No realizó pago IGIC',
+                'Proyecto no apto para ejecución',
+                'Gestión PC'
             ];
             
             // Calcular porcentajes
-            const percentages = mkt1Data.map(val => ((val / totalAllMemories) * 100).toFixed(1));
+            const percentages = mkt1Data.map(val => ((val / 202) * 100).toFixed(1));
             const labelsWithPercent = labels.map((label, idx) => `${label} ${percentages[idx]}%`);
             
             const data = {
@@ -2171,7 +2355,13 @@
                         '#667eea',
                         '#764ba2',
                         '#4facfe',
-                        '#43e97b'
+                        '#43e97b',
+                        '#f093fb',
+                        '#00f2fe',
+                        '#fee140',
+                        '#ff6b6b',
+                        '#fa709a',
+                        '#ffa502'
                     ],
                     borderColor: '#fff',
                     borderWidth: 2
@@ -2206,7 +2396,7 @@
                             callbacks: {
                                 label: function(context) {
                                     const value = context.parsed;
-                                    const totalPercent = ((value / totalAllMemories) * 100).toFixed(1);
+                                    const totalPercent = ((value / 202) * 100).toFixed(1);
                                     return value + ' registros | Del total: ' + totalPercent + '%';
                                 }
                             }
@@ -2221,18 +2411,22 @@
             if (!ctx) return;
             
             const totalAllMemories = 696;
-            const pc1Data = [79, 43, 29, 24, 12, 41];
+            const pc1Data = [80, 63, 21, 20, 18, 13, 10, 1, 1, 1];
             const labels = [
                 'Ghosting',
-                'Baja sin motivo',
-                'Pago IGIC + Falta de pago',
+                'Baja',
                 'Desistido',
-                'Descontento gestión PC',
-                'Otros'
+                'No realizó pago Importe',
+                'No realizó pago IGIC',
+                'Gestión PC',
+                'Error de importe',
+                'Dificultad en plataforma',
+                'Memoria 1 caducada',
+                'Sin evidencias'
             ];
             
             // Calcular porcentajes
-            const percentages = pc1Data.map(val => ((val / totalAllMemories) * 100).toFixed(1));
+            const percentages = pc1Data.map(val => ((val / 228) * 100).toFixed(1));
             const labelsWithPercent = labels.map((label, idx) => `${label} ${percentages[idx]}%`);
             
             const data = {
@@ -2245,7 +2439,11 @@
                         '#4facfe',
                         '#00f2fe',
                         '#43e97b',
-                        '#fa709a'
+                        '#fa709a',
+                        '#fee140',
+                        '#ff6b6b',
+                        '#667eea',
+                        '#ffa502'
                     ],
                     borderColor: '#fff',
                     borderWidth: 2
@@ -2280,7 +2478,7 @@
                             callbacks: {
                                 label: function(context) {
                                     const value = context.parsed;
-                                    const totalPercent = ((value / totalAllMemories) * 100).toFixed(1);
+                                    const totalPercent = ((value / 227) * 100).toFixed(1);
                                     return value + ' registros | Del total: ' + totalPercent + '%';
                                 }
                             }
@@ -2476,6 +2674,156 @@
                 event.currentTarget.classList.add('active');
             }
         }
+
+        // DATOS DE PROYECTOS POR CAUSA
+        const datosProyectosMKT = {
+  'Desistido': [{"nombre": "MEM1 - WEB: Lonca Clinical Services SL", "ops": "11/03 Cliente solicita baja en febrero 2025, por cierre negocio"}, {"nombre": "MEM1 - WEB: JAVIER MARTI POMARES", "ops": "12/03 Cliente solicita baja sin motivo"}, {"nombre": "MEM1 - WEB: LEONOR NAVARRO GIL", "ops": "12/03 Cliente desiste del acuerdo sin información"}, {"nombre": "MEM1 - WEB: Pedro Gomez Lozano", "ops": "12/03 cliente desiste del acuerdo solicita la baja de todos los servicios debido al problema de stock de los MacBook"}, {"nombre": "MEM1 - FACTURA: Pedro Gomez Lozano", "ops": "Cliente solicitó la baja de todos los servicios debido al problema de stock de los MacBook"}, {"nombre": "MEM1 - WEB: AHMED ABDELKADER DRIS", "ops": "12/03 Cliente se da de baja de autónomo"}, {"nombre": "MEM1 - RRSS: SETH ASHLEY FORRESTER", "ops": "28/08/25 cliente indica que \"Tras revisar la propuesta y considerar las implicaciones fiscales, he decidido no continuar con la solución Kit Digita\""}, {"nombre": "MEM1 - ECOMMERCE: Agustin Ureta", "ops": "12/03 Cliente desiste del acuerdo por descontento con el servicio expresa que \"El cliente está muy enfadado porque se publicaron en la web con los dat"}, {"nombre": "MEM1 - WEB: KOBOFLOPI SL", "ops": "12/03 Cliente desiste del acuerdo, no deja información"}, {"nombre": "MEM1 - ECOMMERCE: Beatriz Iban Diezhandino", "ops": "12/03 cliente manifiesta el 15/09/2025 Descontento con el servicio y calidad de la web, expresa que: Clienta reportó que la primera presentación de su"}, {"nombre": "MEM1 - SEO: FENAGAS SL", "ops": "13/03 \"se llama cliente para firma memoria 1: indica que no firmara la memoria debido que no tiene mayor información de su proyecto, pide amablemente "}, {"nombre": "MEM1 - WEB: PIRAMIDE DESARROLLO SL", "ops": "12/03 cliente solicita baja 02/10/2025 cliente comenta que \"comenta que quiere que eliminemos su contacto ya que no quiere seguir con nosotros. Esto p"}, {"nombre": "MEM1 - RRSS: ALONSO JAVIER MARQUEZ BRITO", "ops": "El 19/12/25 indica que quiere cancelar el proceso para que no le cobren multas y el 23/12/25 indica que ya no es autónomo y el proceso le parece engor"}, {"nombre": "MEM1 - RRSS: Marilys José Ugas Salcedo", "ops": "El 25/10/25 se notifico que el cliente solicitó la baja debido a que no estaba de acuerdo con el pago del impuesto IGIC, ya que indica que no se le ha"}, {"nombre": "MEM1 - WEB: ALICIA FERNANDEZ VALCARCEL", "ops": "12/03 Cliente solicita la baja de su KD porque no está de acuerdo con la forma en la que se ha gestionado su proyecto de la web, ya que nadie se ha co"}, {"nombre": "MEM1 - WEB: DARLANE PLANTARD", "ops": "10/03 Baja - Cancelado, 12/03 Cliente tiene problemas  de salud, no puede continuar"}, {"nombre": "MEM1 - RRSS: BLANCA DIAZ LOBON", "ops": "Cliente indica el 29/08/25 que dejó de ser autónoma en julio/2025 y que no quiere el KD"}, {"nombre": "MEM1 - SEO: María del Carmen Bejar Orozco", "ops": "13/03 - Se solicitó la baja el 25/09 porque cliente indica que tiene mucho frentes abiertos y no puede gestionar más cosas, ella compartió los desisti"}, {"nombre": "MEM1 - WEB: JAUME COROMINAS XUFRÉ", "ops": "13/03 el día 13 marzo, la reversetl cambio la fecha de presentación de primera memoria, este proyecto tenia fecha de octubre 2025, cliente desistio de"}, {"nombre": "MEM1 - WEB: CORROCHANO Y ASOCIADOS RESTRUCTURING AND INSOLVENCY S.L.", "ops": "10/03 Baja - Cancelado\n13/03 cliente comenta que \"No le interesa el KD\""}, {"nombre": "MEM1 - WEB: Maria Bilbao Maté", "ops": "13/03 cliente desiste de los 3 acuerdos pc web y factura, debido al rechazo de pc, solicita desistimiento"}, {"nombre": "MEM1 - RRSS: KLAUDIA GORALCZYK KLUSEK", "ops": "13/03 - El 9/09/25 cliente indica que decidieron desistir de acuerdo debido a que otra solución encajaba más con las necesidades de la empresa; requer"}, {"nombre": "MEM1 - WEB: SERAFIN PALMERO CAMPOY", "ops": "12/03 Cambio de servicio  a fact- Cancelado"}, {"nombre": "MEM1 - RRSS: KAREN GORSE", "ops": "12/03 - Se evidencia solicitud de baja del 6/11/25 por motivos de atención recibida, no era lo prometido - todo el contenido en inglés - y las malas r"}, {"nombre": "MEM1 - WEB: PAU VIDAL ALSINA", "ops": "12/03 Cliente expresa 03/10/2025 que no desea continuar, cliente expresa que: Les confirmo de manera expresa que no deseo continuar con el Kit Digital"}, {"nombre": "MEM1 - WEB: KENIA JOSEFINA VIDAL ITURBIDES", "ops": "11/03 Cliente se da de baja por descontento manifiesta que se demoraron mucho en la gestión de la misma"}, {"nombre": "MEM1 - WEB: JAIRO ANDRES RINCON SARMIENTO", "ops": "12/03 Cambio de servicio a RRSS"}, {"nombre": "MEM1 - ECOMMERCE: GUILLERMO SAENZ URDAY", "ops": "13/03 Cliente en octubre 2025, manifiesta que el ordenador que necesita no está disponible, solicita desistimiento de los acuerdos"}, {"nombre": "MEM1 - WEB: CLAUDIA CORNEJO VIVES", "ops": "12/03 Cliente indica el día 25/09/2025 que contacté para ver FDK 1 y bloqueos y dice que no quiso nunca la activación del bono ni los servicios."}, {"nombre": "MEM1 - WEB: RAMON GINER STEVE", "ops": "12/03 Cliente el 29/09/2025 inidica que \ncliente solicita baja, hace un mes, indicó que no quiere ningún servicio dado que no quiere tramitarlo porque"}, {"nombre": "MEM1 - SEO: CLAUDIA CORNEJO VIVES", "ops": "26/09/25 - Se solicita baja porque cliente \"Dice que ella no llegó a firmar los acuerdos y que no quiere el servicio, que lo cancelemos\"\n19/09/25 - In"}, {"nombre": "MEM1 - WEB: VICENTE FERNANDEZ GARCIA", "ops": "12/03 cliente se de baja ya que \"se dará de baja de autónomo en enero porque tiene un nuevo puesto de trabajo incompatible con el autónomo. Abro tkt a"}, {"nombre": "MEM1 - SEO: FERNANDO GARCIA ENCINAS", "ops": "13/03 - El 11/09/25 cliente indica \"pedí que solo se hiciera la parte de SEO y alguien ha formado por mi tambien la parte del ordenador, que expresame"}, {"nombre": "MEM1 - RRSS: Nicole Bazzi", "ops": "23/02 - Desistido porque cliente se dio de baja como Autónomo antes de noviembre 2025"}, {"nombre": "MEM1 - SEO: MARIA ELENA PARDO OROPEZA", "ops": "12/03 - La cliente comparte justificamente de desistimiento del KD-SEO https://app.intercom.com/a/inbox/dqrppy75/inbox/conversation/215473454495982 y "}, {"nombre": "MEM1 - RRSS: Hayat Jaabrane", "ops": "23/02 - Cliente solo estaba interesado en PC, no en KD-RRSS"}, {"nombre": "MEM1 - RRSS: Olinda Caman Chavez", "ops": "13/03 - El 8/09/25 cliente indica que se está dando de baja como autónomo y solicita desistir acuerdos de RRSS y PC"}, {"nombre": "MEM1 - WEB: MARTIN CASAS", "ops": "12/03 cliente el día 01/09 Agustina: cliente solicita la baja del servicio porque no quiere pagar el IVA del servicio,  se contacta via mail"}, {"nombre": "MEM1 - SEO: Miquel Barcelona Palau", "ops": "13/03 cliente solicita baja debido a stock de pc"}, {"nombre": "MEM1 - WEB: carlor hernandez .", "ops": "12/03 el dia 27/octubre 2025 Cliente desiste de los servicios con Orbidi, el motivo es la demora en la atención. Indica que no le dan respuesta sobre "}, {"nombre": "MEM1 - WEB: RIVOURBANO SL", "ops": "13/3 cliente desiste del acuerdo, pero no indica la razón"}, {"nombre": "MEM1 - WEB: Ali Ismael Mohamed", "ops": "13/03 cliente manifiesta desistimiento y solicita baja y solicita desistimiento, debido a que no les gusta ninguna opcion para firmar memoria 1, tambi"}, {"nombre": "MEM1 - WEB: YOUCOM GLOBAL SL", "ops": "12/03 cliente 20/10/2025 desiste del acuerdo no indica porque"}, {"nombre": "MEM1 - WEB: ALEKSEI SEMIGUK", "ops": "12/03 Se valida baja por calidad de la WEB, cliente lo notifico Vanessa tabares crea ticket, el proyecto estaba en in progress y Bruno Ruzic Indica qu"}, {"nombre": "MEM1 - RRSS: Rocío Fernández Oronoz Minguez", "ops": "13/03 - Cliente indica el 30/09/25 que \" mala experiencia con la comunicación, se queja de la IA que llama y pide que firme, falta de contactabilidad "}, {"nombre": "MEM1 - SEO: POL PINTO FABREGAT", "ops": "Se valida en portal gestión el desistimiento del acuerdo"}, {"nombre": "MEM1 - ECOMMERCE: IRIS YOLANDA BARRIOS MATUTE", "ops": "12/03 Cliente desistió del acuerdo sin razón"}, {"nombre": "MEM1 - RRSS: CARLOS MANUEL ENES GOMEZ", "ops": "27/02 - Cliente se dió de baja e informó vía intercom el 4/11/2025"}, {"nombre": "MEM1 - RRSS: SORIBAH CEESAY", "ops": "13/03 - El 2/10/25 indica que contrararon RRSS pero que pensaban que era publicidad y no contenidos, que quieren web y si no se podría gestionar, dar "}, {"nombre": "MEM1 - RRSS: CHRISTIAN HORACIO VETENCOURT ALBA", "ops": "13/03 - El 13/11/25 cliente indica que ORBIDI le firmo sin su consentimiento el proyecto de RRSS, pero queria era una web, se oficializa RRSS"}, {"nombre": "MEM1 - WEB: JOHONNY EDUARDO LA MORGIA", "ops": "13/03 \"Acuerdo WEB No. KD/0001350517 desistido por error en importe, se hizo por 2000 euros y es un proyecto de 1000.\""}, {"nombre": "MEM1 - RRSS: MANASES APLICACIONES SL", "ops": "13/03 - Cliente decidió no continuar con el proceso debido a que no recibieron ningún tipo de comunicaciones por parte de orbidi despues de 2 meses y "}, {"nombre": "MEM1 - RRSS: FORTEC COMUNICACIONES SL", "ops": "27/02 - Cliente solicitó la baja vía correo el 14/11/25 por falta de confianza en la empresa"}, {"nombre": "MEM1 - RRSS: SELENA AGUILAR UCEDA", "ops": "27/02 - Cliente solicitó baja el 5/09/25 por la falta de transparencia en comunicaciones, unida a la ausencia de un servicio efectivo y a la desatenci"}, {"nombre": "MEM1 - WEB: JESSICA BUSTAMANTE ROMERO", "ops": "13/03 cliente solicita baja y desiste del acuerdo \"Me gustaría solicitar la baja desistiendo y renunciando a la ayuda de RED.Es\n\n\n\nEl motivo de la baj"}, {"nombre": "MEM1 - RRSS: MARIA ISABEL SOUSA BRASA", "ops": "No se evidencia motivos de desistimiento"}, {"nombre": "MEM1 - RRSS: MARIANO CHIVA DE AGUSTÍN", "ops": "27/02 - Cliente desistió de acuerdo el 18/09/25, confirmado en llamada, porque \"Mariano no está interesado en continuar con el kit digital\""}, {"nombre": "MEM1 - WEB: Xavier Juncosa Prats", "ops": "13/03 cliente desiste del acuerdo debido a que debe darse de baja de autónomo"}, {"nombre": "MEM1 - WEB: VIRGINIA SOLER RAMÓN", "ops": "27/02 Se valida baja en Hubspot, notificado el 29 julio 2025, cliente no desea continuar ya que busca un ADA mas cercano a su vivienda, proyecto cance"}, {"nombre": "MEM1 - SEO: The Cool Models SL", "ops": "Cliente no tiene una WEB apta para SEO, en febrero no contestó a múltiples llamadas, como se ve en contactos, como se identifica en un ticket de novie"}, {"nombre": "MEM1 - WEB: ROSA MARIA MOLINA SORROCHE", "ops": "13/03 cliente desiste del acuerdo pero no dejo información del porque"}, {"nombre": "MEM1 - RRSS: -- Ana María espadas delgado", "ops": "27/02 - Acuerdo desistido desde el 26/11/25; se ha intentado comunicar con cliente pero no responde o cuelga las llamadas // 11/07/25 indica que clien"}, {"nombre": "MEM1 - RRSS: MELANIE ANN FREEMAN", "ops": "2/03 - Cliente se da de baja el 5/sep/2025 debido a que su situación familiar ha cambiado y no se sentía en condiciones de mantener un perfil digital."}, {"nombre": "MEM1 - SEO: SERGIO VALADES EGIDO", "ops": "13/03 cliente solicita baja y desiste del acuerdo sin información"}, {"nombre": "MEM1 - WEB: Diana Maria Diago Muñoz", "ops": "12/03 Cambio de servicio a RRSS- Cancelado"}, {"nombre": "MEM1 - WEB: NURIA AGUSTINA MIGUEL", "ops": "27/02 Se valida proyecto en hubspot, se da de baja por motivos personales, CS ISAAC AFONSO escala ticket a calidad el día 24 septiembre, proyecto canc"}, {"nombre": "MEM1 - ECOMMERCE: Maria Florencia Garriga Gimenez", "ops": "27/02 se valida proyecto en hubpost, cliente solicita baja por medio de correo a CS belen hernandez 20 de octubre 2025, no se creo ticket, acuerdo des"}, {"nombre": "MEM1 - SEO: KALLYM JOHANNA CHENG GELVES", "ops": "13/03 cliente solicita baja y desiste del acuerdo debido a que da de baja de autónomo"}, {"nombre": "MEM1 - RRSS: JESICA ALFONSO SUÁREZ", "ops": "4/03 - Cliente solicitó la baja el 24/09/25 porque \"ya no necesita la subvención\"; se evidencia acuerdo desistido el 4/11/25"}, {"nombre": "MEM1 - WEB: Juan Francisco Serrano del Pozo", "ops": "13/03 cliente desiste del acuerdo - sin información de motivos"}, {"nombre": "MEM1 - SEO: GIMOR 2017 SL", "ops": "Desde agosto cliente indica que no quiere KD"}, {"nombre": "MEM1 - WEB: Blanca Paloma Tellez Sanchez", "ops": "27/02 Se valida en Hubspot, cliente no notifica baja, ReverseETL es quien lo cambia a desistido"}, {"nombre": "MEM1 - WEB: ENGRAMA PSICOLOGIA SL", "ops": "27/02 Se valida en Hubspot, cliente solicita baja a Diego moreno, no se escala ticket, proyecto cancelado, acuerdo validado"}, {"nombre": "MEM1 - WEB: PEDRO LUIS VADILLO GARCIA", "ops": "27/02 Se valida en hubspot, cliente desiste del acuerdo debido a la gestión del PC, notificado en marzo 2025, proyecto cancelado"}, {"nombre": "MEM1 - RRSS: INES TAVEIRA MARQUES", "ops": "9/03 - Cliente solicita la baja indicando que no quiere saber nada de Orbidi \n// Acuerdo se encuentra desistido"}, {"nombre": "MEM1 - SEO: OCTAVIAN MARCHITAN", "ops": "27/03 - Se evidencia acuerdo desistido desde febrero/2026, debido a que cliente tenía dudas sobre el costo del ordenador y se le enviaron los pasos de"}, {"nombre": "MEM1 - FACTURA:  FERRO NIAVI SL", "ops": "Cliente solicito desistimiento de factura y cambio a otro proyecto, ya se encuentra desistido se gestiona baja."}],
+  'Ghosting': [{"nombre": "MEM1 - FACTURA: 321 GESTIO I SERVEIS SL", "ops": "Proyecto con KO por solicitud de nuevo email que quedo pendiente de gestión."}, {"nombre": "MEM1 - FACTURA: MARIA ROSA PARES PETRUS", "ops": "Se escala a tramitación para verificación del error de memoria, se soluciona y escala para firma del cliente a front"}, {"nombre": "MEM1 - SEO: COFFEINE RETAIL SL", "ops": "9/02/26 se contactó con cliente e indicó que iba a realizar la firma de la memoria, sin embargo no volvió a responder a la solicitud de firma y creden"}, {"nombre": "MEM1 - FACTURA: CENTRO MEDICO DE LA PAZ PORCEL SLP", "ops": "Se llama a cliente en múltiples ocasiones solicitando firma y no contesta."}, {"nombre": "MEM1 - FACTURA: ARIADNA ALONSO SANCHO", "ops": "Se escala a tramitación para revisión de memoria."}, {"nombre": "MEM1 - FACTURA: SERGI ALFEREZ PROS", "ops": "Se escala a tramitación para verificación del error de memoria, se soluciona y escala para firma del cliente a front"}, {"nombre": "MEM1 - WEB: JUAN ANTONIO GARVIA MARTINEZ", "ops": "13/03 el día 13 marzo, la reversetl cambio la fecha de presentación de primera memoria, este proyecto tenia fecha de octubre 2025"}, {"nombre": "MEM1 - FACTURA: AUTOGESTION LA ROCA SL", "ops": "Se verifica portal gestión y se encuentra a la espera de firma por parte del cliente, se escala a front para contactar al cliente."}, {"nombre": "MEM1 - FACTURA: BERNARDO ANTONIO URBINA URIBE", "ops": "Se verifica portal gestión y se encuentra a la espera de firma por parte del cliente, se escala a front para contactar al cliente."}, {"nombre": "MEM1 - WEB: Fred William Mafra de Souza", "ops": "13/03 el día 13 marzo, la reversetl cambio la fecha de presentación de primera memoria, este proyecto tenia fecha de octubre 2025, ademas se envidenci"}, {"nombre": "MEM1 - SEO: Ruben Varela", "ops": "13/03 - Cliente de Ghosting mem 1, no contesta comunicaciones; no se visualizaba debido a que tenía fecha de presentación en 08/10/2025, modificado po"}, {"nombre": "MEM1 - RRSS: Eme a eme complementos SL", "ops": "13/03 - Cliente de Ghosting MEM 1; se esta solicitando firma de memoria desde el 15/11/25 y no se obtiene respuesta - Proyecto no era visible debido a"}, {"nombre": "MEM1 - WEB: KARY ALEXANDRA HERRERA ROMERO", "ops": "13/03 el día 13 marzo, la reversetl cambio la fecha de presentación de primera memoria, este proyecto tenia fecha de octubre 2025, se le envía a estef"}, {"nombre": "MEM1 - WEB: SERGIO JAIME PEREZ", "ops": "11/02 se verifica y proyecto en error revisar, se verifica en portal gestión y se puede ffirmar se envia a cs para que priorice y firme"}, {"nombre": "MEM1 - WEB:  Tuttemes Kelvys Ramos de Almeida", "ops": "13/03 el día 13 marzo, la reversetl cambio la fecha de presentación de primera memoria, este proyecto tenia fecha de octubre 2025, se le envía a estef"}, {"nombre": "MEM1 - WEB: DIEGO MARTIN RODRIGUEZ", "ops": "11/03 gestionado con CS owner WEB Tatiana Ortiz para que gestione firma con cliente"}, {"nombre": "MEM1 - SEO: TAHIR AHMED RAZAQ BEGUM", "ops": "13/03 - Proyecto no estaba en vista por error reversetl donde presentación mem 1 fue el 18/12/2025 - Se escala con equipo de front"}, {"nombre": "MEM1 - RRSS: Sandra Larraga Morata", "ops": "13/03 - Cliente indica que espera tener todo firmado la próxima semana en cuento tenga el certificado digital, sin embargo se escala a front debido a "}, {"nombre": "MEM1 - WEB: MARK FRANCIS PENDRY", "ops": "13/03 el día 13 marzo, la reversetl cambio la fecha de presentación de primera memoria, este proyecto tenia fecha de octubre 2025, se le envía a estef"}, {"nombre": "MEM1 - FACTURA: RICARDO RODIÑO VAZQUEZ", "ops": "Se verifica portal gestión y se encuentra a la espera de firma por parte del cliente, se escala a front para contactar al cliente."}, {"nombre": "MEM1 - WEB: RUBEN SANTOS MAYORDOMO", "ops": "13/03 el día 13 marzo, la reversetl cambio la fecha de presentación de primera memoria, este proyecto tenia fecha de octubre 2025, se le envía a estef"}, {"nombre": "MEM1 - FACTURA: CONTRATAS SANTAFE SL", "ops": "Se verifica portal gestión y se encuentra a la espera de firma por parte del cliente, se escala a front para contactar al cliente."}, {"nombre": "MEM1 - WEB: Pedro Pérez Torres", "ops": "13/03 el día 13 marzo, la reversetl cambio la fecha de presentación de primera memoria, este proyecto tenia fecha de octubre 2025, se le envía a estef"}, {"nombre": "MEM1 - SEO: Pedro Pérez Torres", "ops": "Cliente Ghosting, no responde a intentos de contacto //\n13/03 - Se evidencia una solicitud de baja, sin embargo esta se relaciona con la gestión de PC"}, {"nombre": "MEM1 - SEO: Halil INAN", "ops": "19/03 - Cliente se contacta para completar el tema de la firma, se intentan acordar horarios pero no contesta, sin embargo esta ya habia caducado\n\n16/"}, {"nombre": "MEM1 - FACTURA: El Mostafa Bannar Bannar", "ops": "Se verifica portal gestión y se encuentra a la espera de firma por parte del cliente, se escala a front para contactar al cliente."}, {"nombre": "MEM1 - WEB:   E2ARQ ARQUITECTURA, INGENIERIA Y CONSTRUCCION, SOCIEDAD LIMITADA", "ops": "09/03 Producción entrega proyecto, pendiente que tramitación actualice la memoria y la envíe de nuevo a portal gestión\n\n11/03 se encuentra en pendient"}, {"nombre": "MEM1 - WEB: MANFREDI NADAI", "ops": "13/03 el día 13 marzo, la reversetl cambio la fecha de presentación de primera memoria, se cambio a vacio, se le envía a estefanny gil para lograr sal"}, {"nombre": "MEM1 - WEB: ROCIO PILES CUESTA", "ops": "24/03  Cliente se le intenta contactar en diferentes ocasiones, no contesta\n\n13/03 el día 13 marzo, la reversetl cambio la fecha de presentación de pr"}, {"nombre": "MEM1 - SEO: KALYN RYO ISHIKAWA", "ops": "Cliente no contesta a intento de comunicaciones\n\n13/03 el día 13 marzo, la reversetl cambio la fecha de presentación de primera memoria, se cambio a v"}, {"nombre": "MEM1 - WEB:  MAEVA MONIQUE QUESADA", "ops": "24/03 cliente no contesta, hace ghosting\n\n13/03 el día 13 marzo, la reversetl cambio la fecha de presentación de primera memoria, se cambio a vacio, s"}, {"nombre": "MEM1 - WEB: MARIO ROCA HERVAS", "ops": "24/03 cliente en multiples ocasiones indica que no tiene nada que ver con Oribid e indica a la CS que: Atiende pero indica no escucharme bien. Luego e"}, {"nombre": "MEM1 - WEB: BELKIS JULISA VELASQUEZ CASTILLO", "ops": "24/03 cliente no atiende a llamado, hace ghosting\n\n13/03 el día 13 marzo, la reversetl cambio la fecha de presentación de primera memoria, se cambio a"}, {"nombre": "MEM1 - RRSS: Francisco González Sánchez", "ops": "28/03 - Cliente no responde a intentos de comunicación\n27/03 - Cliente no volvió a responder, marcado como ghosting\n13/03 - el 12/03/26 se contacto co"}, {"nombre": "MEM1 - RRSS: JESUS CAMACHO CINTA", "ops": "11/03 - Cliente informa que tenía problemas intentó firmar utilizando la clave móvil pero problemas técnicos le impidieron accesos\n4/03 - Durante el m"}, {"nombre": "MEM1 - WEB: RAUL COSTERO SARMIENTO", "ops": "24/03 Cliente hace ghosting \n13/03 el día 13 marzo, la reversetl cambio la fecha de presentación de primera memoria, se cambio a vacio, se le envía a "}, {"nombre": "MEM1 - RRSS: JOSE FILANDER DELCID HENRIQUEZ", "ops": "Cliente no contesta\n\n4/03 - Cliente de ghosting"}, {"nombre": "MEM1 - SEO: DIGITAL CRAFTERS SL", "ops": "Cliente no contesta a intentos de contacto, se marca ghosting memoria 1\n\nSe valida en ClickUp que la memoria se encuentra lista, pendiente firma"}, {"nombre": "MEM1 - RRSS: PEDRO GARCIA GARCIA", "ops": "Cliente no responde a comunicaciones\n\n13/03 - En comunicación para firma de memoria de ordenador indica que no sabe como firmar y despues no responde "}, {"nombre": "MEM1 - WEB: Rehtse Airam", "ops": "27/02 se valida proyecto, está cancelado\n\n12/03 se cancela desde ventas mar del prado, proyecto aun en validado en portal gestión se intentara salvar,"}, {"nombre": "MEM1 - ECOMMERCE: FINE PROGRAMS S.L.", "ops": "24/03 Se envía a TL para que prioricen la firma\n\n13/03 el día 13 marzo, la reversetl cambio la fecha de presentación de primera memoria, este proyecto"}, {"nombre": "MEM1 - WEB: Cristian sandu", "ops": "24/03 cliente no contesta\n\n13/03 el día 13 marzo, la reversetl cambio la fecha de presentación de primera memoria, se cambio a vacio, se le envía a es"}, {"nombre": "MEM1 - WEB: FREDA JANE SALMON", "ops": "13/03 el día 13 marzo, la reversetl cambio la fecha de presentación de primera memoria, este proyecto tenia fecha de octubre 2025, se le envía a estef"}, {"nombre": "MEM1 - WEB: Escalofrio Instalaciones Sl", "ops": "24/0 cliente hace ghosting \n06/03 proyecto se encuentra en pendiente firma, se le envia a TL alejandra para llamar cliente y priorizar"}, {"nombre": "MEM1 - SEO: FRANCISCO PARRA RODRIGUEZ", "ops": "28/03 - Se intenta comunica a cliente, sin embargo no contesta\n27/03 - Proyecto continua pendiente de firma - Ghosting; Se escala a TL Alejandra para "}, {"nombre": "MEM1 - FACTURA: FRANCISCO JOSE CORUJO AFONSO", "ops": "Se observan en hubspot reportes de ghosting, se escuchan algunos intentos de comunicación para cobro IGIC y el cliente no responde."}, {"nombre": "MEM1 - WEB: VIDAKAME MULTISERVEIS, SL", "ops": "24/03 Cliente hace ghosting\n\n06/03 proyecto se encuentra en pendiente firma, se le envia a TL alejandra y a Stefaany gil para llamar cliente y prioriz"}, {"nombre": "MEM1 - SEO: THE PYRENEAN EXPERIENCE SL", "ops": "Cliente no responde a contacto //\n\n27/03 - Continua pendiente de firma, se escala a TL Ubay \n\nSe valida en portal de gestión el estado de la memoria, "}, {"nombre": "MEM1 - FACTURA: FONTAUNION SL", "ops": "Se verifica portal gestión y se encuentra a la espera de firma por parte del cliente, se escala a front para contactar al cliente."}, {"nombre": "MEM1 - SEO: PERCY ALFONSO CUBA DEL CASTILLO", "ops": "1/04 - Cliente no responde a intentos de contacto con él, se marca Ghosting y memoria caduca pendiente de firma.\n27/03 - Proyecto continua pendiente f"}],
+  'Dificultad en plataforma': [{"nombre": "MEM1 - WEB: GEMA GARCÍA-MIRANDA DE LA PUENTE", "ops": "13/03 el día 13 marzo, la reversetl cambio la fecha de presentación de primera memoria, este proyecto tenia fecha de octubre 2025"}, {"nombre": "MEM1 - SEO: Fernando Gonzalez Lopez", "ops": "13/03 - Proyecto no se visualizaba porque tenía fecha de presentación de memoria el 02/12/2025 - Se escala con equipo de front para intentar comunicar"}, {"nombre": "MEM1 - WEB: Daniel Alejandro parada andueza", "ops": "13/03 el día 13 marzo, la reversetl cambio la fecha de presentación de primera memoria, este proyecto tenia fecha de octubre 2025, se le envía a estef"}, {"nombre": "MEM1 - RRSS: DINA ESTHER CABRERA SALINAS", "ops": "20/03 - Cliente indica que le fue imposible a ella y al gestor realizar el 2do paso de la firma; se le explicó como podría avanzar y descargar el auto"}, {"nombre": "MEM1 - RRSS: DAVID NOVOA PINEDA", "ops": "27/03 - Cs logra contactarse con cliente despues de que no contestara, sin embargo este indica que le ha dado error en redes - Posiblemente por la cad"}],
+  'Calidad del producto': [{"nombre": "MEM1 - WEB: Fernando Gonzalez Lopez", "ops": "13/03 el día 13 marzo, la reversetl cambio la fecha de presentación de primera memoria, este proyecto tenia fecha de octubre 2025, se le envía a estef"}, {"nombre": "MEM1 - RRSS: Juan José Páez Rojas", "ops": "Cliente no responde a intentos de contacto \n\n13/03 - El 11/11/25 cliente indica que no le gusta el formato de la propuesta, sin embargo, no entrega FD"}, {"nombre": "MEM1 - RRSS: Magnolia Europa SL", "ops": "Se evidencia ticket de solicitud de baja desde el 16/12/25 y solicitud desde septiembre a través de intercom pues por error en su cuenta de finanzas s"}, {"nombre": "MEM1 - WEB: MARGERAN  SOLUTIONS SLU", "ops": "13/03 cliente indica que no está interesado en nada que siempre lo contacto un bot \"cliente realizo el desestimiento hace mas de 20 dias del proyecto,"}, {"nombre": "MEM1 - WEB: Jose Manuel Robledillo Lopez", "ops": "24/03 Cliente dice que no firmará memoria 1 de WEB, debido a su incidencia con el pc y mala gestión que recibió\n\n13/03 el día 13 marzo, la reversetl c"}],
+  'No realizó pago IGIC': [{"nombre": "MEM1 - RRSS: ZANETTA IRENE  ZENNA", "ops": "Cliente no realiza pago de IGIC porque indica que su empresa está exenta a pesar de que se requiere el pago para poder avanzar con la presentación"}, {"nombre": "MEM1 - SEO: VIBOL SELECCION SL", "ops": "12/03 - Gestión escalada con equipo de Front de Felipe Pineda para solicitar pago de IGIC // Pago IGIC"}, {"nombre": "MEM1 - WEB: MARLENE VILLANUEVA CABALLERO", "ops": "27/02 Se valida baja en hubspot, cliente no desea pagar IGIC, escalado el 23 de septiembre 2025, proyecto cancelado"}, {"nombre": "MEM1 - RRSS: DANIELA PEÑUELA SARRIA", "ops": "Cliente no dio respuesta para realizar pago\n\n4/03 - Se evidencia intento de comunicación con cliente para pago de IGIC desde el 16/10/25 hasta ahora s"}, {"nombre": "MEM1 - RRSS: LIZ KARINA TERRAZAS SEJAS", "ops": "Cliente no responde a intentos de contacto con él\n\n4/03 - Se intenta contactar a cliente para pago desde el 16/10/2025 sin obtener respuesta"}, {"nombre": "MEM1 - ECOMMERCE: TANAUSU ALVARO CABRERA MARTIN", "ops": "27/03 cliente hace ghosting\n\n27/02 Se valida proyecto, desde 19 Noviembre 2025 se bloquea proyecto por pago de IGIC, Se envía a Felipe pineda para que"}],
+  'Proyecto no apto para ejecución': [{"nombre": "MEM1 - SEO: CRISTOBAL REINOSO PORTAS", "ops": "12/03 - Se solicitó al cliente la web activa para poder avanzar con el proyecto y el 27/02/26 indicó que cuando la tuviera activa nos informaría y no "}, {"nombre": "MEM1 - SEO: ORIOL CAYETANO AGUILERA", "ops": "Ghosting - Cancelado - Rechazado Brief"}, {"nombre": "MEM1 - SEO: MATTIA REA", "ops": "Proyecto cerca de vencer, cliente no contesta llamadas, excepto una el 23 de febrero, indica que se encuentra enfermo,  su WEB no carga"}],
+  'Gestión PC': [{"nombre": "MEM1 - FACTURA: SIOSI PUNTO GRAFICO SL", "ops": "Cliente se niega a firmar la memoria hasta que se aclare la situación respecto a la entrega del ordenador."}],
+  'Baja': {
+    'Descontento servicio': [{"nombre": "MEM1 - WEB: Francisco Jesús Carlos López", "ops": "12/03 Cliente renunció al acuerdo por descontento con el servicio"}, {"nombre": "MEM1 - WEB: Virginia Ruipere González", "ops": "12/03 descontento con el servicio"}, {"nombre": "MEM1 - WEB: BRUNO LAUTARO PINI", "ops": "24/03 Cliente desiste desde diciembre 2025 por motivo de falta de seguimiento"}, {"nombre": "MEM1 - WEB: ANTONIO MUÑOZ MEDINA", "ops": "10/03 Proyecto salvado - mal cancelado\n11/03 proyecto se encuentra en error revisar\n\n11/03 se valida en portal gestión, no hay ningun error el cliente"}, {"nombre": "MEM1 - FACTURA: GLOBAL INVERSIONES AXARQUIA SL", "ops": "Cliente solicita baja, desea irse con otra empresa."}, {"nombre": "MEM1 - WEB: Automur Sur SL", "ops": "12/03 el cliente el 13/01/2026 indica que: se dió de baja hace tiempo por inconformidad con la gestión del Kit."}, {"nombre": "MEM1 - ECOMMERCE: MARIA ANGELES ALONSO GARCIA", "ops": "27/02 Se valida baja, cliente se notifica con @martina balcazar, indica que no desea continuar, proyecto cancelado en hubspot y ticket escalado a cali"}, {"nombre": "MEM1 - FACTURA: JOHONNY EDUARDO LA MORGIA", "ops": "Solicitudes del cliente verificadas en hubspot en las cuales mencionan la solicitud de no continuidad con el servicio de facturación, ticket escalado "}, {"nombre": "MEM1 - WEB: EDUARDO HERRERA RODRIGUEZ", "ops": "13/03 el día 9/03 se llama a cliente solicita baja"}, {"nombre": "MEM1 - WEB: GLEYTON ARAÚJO OLIVEIRA", "ops": "27/02 Se valida proyecto, baja sin motivos, Belen hernandez escalo ticket el día 30 octubre, es una baja no oficializada, ya que el acuerdo sigue en v"}],
+    'Sin motivo': [{"nombre": "MEM1 - WEB: LUIGI FUCCI", "ops": "13/03 el día 13 marzo, la reversetl cambio la fecha de presentación de primera memoria, este proyecto tenia fecha de octubre 2025"}, {"nombre": "MEM1 - WEB: MARTA GONZALEZ TORRES", "ops": "13/03 el día 13 marzo, la reversetl cambio la fecha de presentación de primera memoria, el cliente desistio del acuerdo no dejo información del motivo"}, {"nombre": "MEM1 - WEB: Antonio Zambrana Rivas", "ops": "24/03 Cliente se da de baja de autonomo\n\n13/03 el día 13 marzo, la reversetl cambio la fecha de presentación de primera memoria, se cambio a vacio, se"}, {"nombre": "MEM1 - WEB: RAFAEL MOYANO MARQUEZ", "ops": "24/03 cliente solicita baja debido a que: se le aprobo un valor superior a lo que el quiere utilizar, quiere usar solo 1000 Euros y la Web se le aprob"}, {"nombre": "MEM1 - WEB: MARCOS GERMAN RIVEIRO VARELA", "ops": "24/03 cliente no firma porque solicita baja, no especifica el porque\n\n\n13/03 el día 13 marzo, la reversetl cambio la fecha de presentación de primera "}, {"nombre": "MEM1 - WEB: Andrea Alvarez Ontiveros", "ops": "24/03 cliente solicita baja, solo le interesa el ordenador\n\n\n13/03 el día 13 marzo, la reversetl cambio la fecha de presentación de primera memoria, s"}, {"nombre": "MEM1 - WEB: PCI SUR SISTEMA Y SUMINISTROS SL", "ops": "24/03 Cliente solicita baja no indica el porque\n\n13/03 el día 13 marzo, la reversetl cambio la fecha de presentación de primera memoria, este proyecto"}],
+    'Baja autónomo': [{"nombre": "MEM1 - WEB: LAURENTINA JIMENEZ MILLANES", "ops": "13/03 el día 13 marzo, la reversetl cambio la fecha de presentación de primera memoria, este proyecto tenia fecha de octubre 2025, ademas la cliente d"}, {"nombre": "MEM1 - WEB: JUAN CABANILLAS ADAMEZ", "ops": "12/03 Cliente solicita baja de autónomo el día 25 agosto 2025 por jubilación"}, {"nombre": "MEM1 - WEB: PEDRO JOSE CAÑAS MORENO", "ops": "13/03 cliente solicita baja desde noviembre 2025, se dio de baja de autónomo"}, {"nombre": "MEM1 - RRSS: MIHAELA GROSU", "ops": "13-03 - Se evidencia solicitud de baja del cliente el 5/03/26 donde indica que se da de baja como autónoma y que no quiere seguir con la gestión del K"}, {"nombre": "MEM1 - RRSS: David Rodriguez Perez", "ops": "27/02 - Proyecto con baja definitiva marcado el 19/02 por CX"}, {"nombre": "MEM1 - RRSS: Mohamed akhachab", "ops": "27/02 - Cliente se dio de baja como Autónomo en agosto/2025; Baja confirmada por equipo CX el 06/02/2026"}, {"nombre": "MEM1 - WEB: YANA SENIA", "ops": "27/02 Se valida baja por motivos personales escalado el 30 de abril 2025, estado proyecto cancelado"}],
+    'Cierre de negocio': [{"nombre": "MEM1 - RRSS: Eugenia del Rocío Mora González", "ops": "12/03 - Cliente no contesta a intentos de contacto, se evidencia coomentario indicando la baja por Daniela B"}, {"nombre": "MEM1 - SEO: GLOBAL INVERSIONES AXARQUIA SL", "ops": "12/03 -  Se evidencia rechazo de memoria y que acuerdo vigente de SEO sigue activo con un número diferente al desisitimiento presentado por el cliente"}, {"nombre": "MEM1 - SEO: SERGIO HERRANZ  LUCENA", "ops": "No se encuentra información asociada a baja directamente en HubSpot el proyecto se encuentrada cancelado por CS, motivo: Cierra el Negocio, se envia p"}, {"nombre": "MEM1 - SEO: EDUVIGES OLARIS PALACIO JIMENEZ", "ops": "13/03 cliente notifica el 12/01/2026 que se da de baja, debido al cierre de su negocio"}, {"nombre": "MEM1 - RRSS: DAVID GIRONA RODRIGUEZ", "ops": "19/03 - Cliente informa sobre solicitud de baja por cierre de negocio y que lleva mucho tiempo solicitandolo\n\n4/03 - escalado a CS para solicitar firm"}],
+    'Sin interés en proyecto': [{"nombre": "MEM1 - ANALITICA: BASAGOITI PATRIMONIAL SL", "ops": "12/03 - 26/02/26 indicó que no quería seguir adelante y que no estaban interesados en que se prestaran los servicios // 25/02/26 cliente indicó que no"}, {"nombre": "MEM1 - RRSS: FRANCISCO JAVIER VELASQUEZ GUILLEN", "ops": "13/03 - Cliente indica el 6/03/26 que pide la baja debido a que nunca contrato el KD, que nos lo inventamos"}, {"nombre": "MEM1 - RRSS: ALMUDENA GARROCHO RODRIGUEZ", "ops": "13/03  Cliente indica que no quiere continuar, que no le interesa la subvención"}, {"nombre": "MEM1 - RRSS: KATERINE GISELA CAJAMARCA CACERES", "ops": "19/03 Cliente solicitó anular la ayuda y posterior a esto no se volvió a obtener respuesta\n\n17/03 - Cliente indica que no quiere continuar con el proy"}],
+    'Descontento con servicio': [{"nombre": "MEM1 - SEO: JENNY CASTRO JIMENEZ", "ops": "13/03 el día 13 marzo, la reversetl cambio la fecha de presentación de primera memoria, se cambio a vacio, se le envía a estefanny gil para lograr sal"}, {"nombre": "MEM1 - SEO: CLAUDIA VALENTINA SEPULVEDA SUAREZ", "ops": "24/03 - Cliente molesta porque el PC dejo de funcionar y que no iba a firmar nada ya que no habia recibido nada del Kit digital, que ya lo había infor"}, {"nombre": "MEM1 - RRSS: FRANCISCO  CRUZ REQUENA", "ops": "26/03 Cliente indica que ya termino con nosotros y que no le molestemos más a pesar de intentar explicarle sobre el estado de su proyecto\n\n16/03 - Cli"}, {"nombre": "MEM1 - FACTURA: VTCROQUETAS DE MAR, S.L.U.", "ops": "Cliente indica en llamada que no tiene nada que ver con orbidi, se solicita presente solicitud de baja pero no se reporte."}],
+    'Sin interés en el proyecto': [{"nombre": "MEM1 - RRSS: JONATHAN FERNANDEZ FERNANDEZ", "ops": "Se intento comunicar con cliente varias veces y este indicaba que no estaba interesado en nada y que no quería tomar nada"}, {"nombre": "MEM1 - RRSS: EDUARDO RIVAS CAICEDO", "ops": "El 12/02/2026 se llamo al cliente para realizar el pago IGIC, sin embargo el cliente expresa que no quiere continuar con el KD y que no quiere expresa"}],
+    'Imposibilidad seguir con subvención': [{"nombre": "MEM1 - RRSS: JORGE ANTONIO IDALGO MARCILLO", "ops": "El 11/02/26 cliente indicó que no podía seguir debido a que no se le entregó PD-RRSS y ya no se encuentra en España para poder gestionarlo"}, {"nombre": "MEM1 - RRSS: María del Carmen Ramos Serrano", "ops": "2/03 - Cliente solicitó la baja via correo electrónico el 3 de febrero de 2026 y el 20 de febrero lo reitera y que no se le genere ningún contacto htt"}],
+    'Atención recibida': [{"nombre": "MEM1 - RRSS: CRISTINA SANCHEZ SANCHEZ", "ops": "13/03 - Cliente solicitó la baja el 2/05/25 debido a que nadie le habí enseñado el proyecto o contactado; ella misma gestiono el desistimiento de uno "}, {"nombre": "MEM1 - RRSS: HOUSAM OUADI LASGA", "ops": "2/03 - Cliente solicito baja de productos RRSS y PC el 15 de sep. de 2025, ya que no quería nada con nosotros"}],
+    'baja de autónomo': [{"nombre": "MEM1 - RRSS: HENRY DANIEL ENCALADA MANCHAY", "ops": "11/03 - Se intentó contactar a cliente y este indicó \"Mire que dejamos de querer esto ase mucho tiempo no queremos (...) No tenemos nada contratado\" /"}],
+    'Baja de autónomo': [{"nombre": "MEM1 - ECOMMERCE: MARIA ROCAPREVERA SOLA DEGES", "ops": "12/03 Cliente se da de baja proyecto ECOM por descontento con el servicio, continua con PC"}],
+    'No indica motivo': [{"nombre": "MEM1 - FACTURA: Aleksandar Ilich Aleksandrov", "ops": "Cliente solicita la baja del proyecto se revisa intercom y menciona que no desea indicar motivo"}],
+    'Mala reputación ORBIDI': [{"nombre": "MEM1 - RRSS: MARIA ISABEL IZQUIERDO ROMERO", "ops": "El 23/12/25 indica que renunció a la subvención con ORBIDI // El 30/10/25 indico que no había dado la autorización y que no la molestaran mas -se enti"}],
+    'Descontento  servicio': [{"nombre": "MEM1 - WEB: SUMA MEDICINA ESTETICA SOCIEDAD LIMITADA", "ops": "11/03 proyecto en errror revisar en clickup, y en portal gestión en pdte conformidad pyme, se envia a cs para que intente firmarlo"}],
+    'inconformidad con serivicio': [{"nombre": "MEM1 - FACTURA: Maria Bilbao Maté", "ops": "Proyecto dado de baja por inconformidad del cliente."}],
+    'Gestión PC': [{"nombre": "MEM1 - RRSS: BORJA GONZALES ROGRIGUEZ", "ops": "12/03 - El 4/02/26 adjunto justificantes de desistimiento de acuerdos RRSS y PC // Solicitud de baja el 23/12/25, donde se indica que \"esperó mucho po"}],
+    'Calidad del producto': [{"nombre": "MEM1 - WEB: VICTOR PALOS SERRALVO", "ops": "24/03 Cliente desiste del acuerdo y solicita baja desde 30 septiembre 2025 debido a : El cliente solicitó la baja el 21 de mayo por correo a su cs en "}],
+    'Cierra de negocio': [{"nombre": "MEM1 - SEO: Adolfo Ramon Rodriguez Díaz", "ops": "13/03 cliente notifica que debe darse de baja debido a que ya no tiene la empresa"}],
+    'Cierre negocio': [{"nombre": "MEM1 - WEB: LUISANA JIONMAR VECHIONACCI ALFARO", "ops": "13/03 cliente solicita baja traspaso de negocio"}],
+    'Falta de comunicación': [{"nombre": "MEM1 - SEO: DANIEL VIDAL CUADRADO", "ops": "En agosto 2025 cliente envía correo pidiendo baja; cliente indica que trató de comunicarse con ORBIDI y no fué posible"}],
+  }
+};
+const datosProyectosPC = {
+  'Ghosting': [{"nombre": "MEM1 - PC: 321 GESTIO I SERVEIS SL", "ops": "Cliente no firmo memoria lo cual causo perdida de esta"}, {"nombre": "MEM1 - PC: DAVID HERNANDEZ OCAÑA", "ops": "Se le escala proyecto a Stefany Gil para que contacte para la firma."}, {"nombre": "MEM1 - PC: ALEJANDRO FERNANDEZ FERNANDES", "ops": "Se le insiste a cliente para firma, no contesta hasta el momento"}, {"nombre": "MEM1 - PC: XECUDO TURBO, SOCIEDAD LIMITADA", "ops": "Se caduca la memoria debido a que cliente no contestó en ningun momento"}, {"nombre": "MEM1 - PC: Ximena pulgar Salazar", "ops": "Cliente con firma pendiente,  indica que puede firmar el dia 18 porque se bloqueo el certificado digital. Se le escala a Stefany Gil"}, {"nombre": "MEM1 - PC: ALCIDES JUNIOR CHACOA PESTANA", "ops": "Cliente con problemas para firmar, se le escala proyecto a Stefany Gil para atender."}, {"nombre": "MEM1 - PC: CARLOS ALBERTO OSPINA VALENCIA", "ops": "Se le ha contactado recientemente para firma y no contesta."}, {"nombre": "MEM1 - PC: MANUEL PEDRO RAMOS NAVARRO", "ops": "Se le ha contactado recientemente para firma y no contesta."}, {"nombre": "MEM1 - PC: AUTOGESTION LA ROCA SL", "ops": "Se le ha contactado recientemente para firma y no contesta."}, {"nombre": "MEM1 - PC: CAROLINA MARRERO PALENZUELA", "ops": "Se revisa intercom y no se evidecian respuestas por parte de la clienta respecto a la firma."}, {"nombre": "MEM1 - PC: Oswaldo Alonso Martinez Vieira", "ops": "Se le ha contactado recientemente para firma y no contesta."}, {"nombre": "MEM1 - PC: Miquel Jiménez López", "ops": "Se le ha contactado recientemente para firma y no contesta."}, {"nombre": "MEM1 - PC: BERNARDO ANTONIO URBINA URIBE", "ops": "Se le ha contactado recientemente para firma y no contesta."}, {"nombre": "MEM1 - PC: FRANCISCO JAVIER RODRIGUEZ GONZALEZ", "ops": "Se le ha contactado recientemente para firma y no contesta."}, {"nombre": "MEM1 - PC: MARIA DEL ROSARIO LOPEZ PLA", "ops": "Se le ha contactado recientemente para firma y no contesta."}, {"nombre": "MEM1 - PC: Richard Leonardo Colmenares Díaz", "ops": "Se entrega PC desde 19 de feb, está pendiente la firma. Se le escala proyecto a Stefany Gil para gestión."}, {"nombre": "MEM1 - PC: ELISABET DE LA FUENTE EJARQUE", "ops": "Se le ha contactado recientemente para firma y no contesta."}, {"nombre": "MEM1 - PC: SANTIAGO CAÑIBANO PONCE DE LEON", "ops": "Se le ha contactado recientemente para firma y no contesta."}, {"nombre": "MEM1 - PC: José Daniel Gómez Cruz", "ops": "Se le insiste al cliente para la firma de memoria 1, de momento no se logra respuesta ya que siempre cuelga las llamadas."}, {"nombre": "MEM1 - PC: SANTIAGO PEREZ", "ops": "Se le ha contactado recientemente para firma y no contesta."}, {"nombre": "MEM1 - PC: MARIA DEL PILAR ORTEGA GARCIA", "ops": "PC estuvo en transito pero no se le entregó al cliente porque no contestaba para recibirlo"}, {"nombre": "MEM1 - PC: Raul Basilio Molina Villalba", "ops": "Se le ha contactado recientemente para firma y no contesta, se escala para firma"}, {"nombre": "MEM1 - PC: ANNA MARIA SRON", "ops": "Se le ha contactado recientemente para firma y no contesta."}, {"nombre": "MEM1 - PC: PEDRO ESPOSITO RUIZ", "ops": "Cliente no contesta para realizar firma"}, {"nombre": "MEM1 - PC:  Tuttemes Kelvys Ramos de Almeida", "ops": "Se le contacta al cliente para firma, de momento no contesta las llamadas."}, {"nombre": "MEM1 - PC: TAHIR AHMED RAZAQ BEGUM", "ops": "Cliente contesta y cuelga la llamada"}, {"nombre": "MEM1 - PC: Eric Gil Marco", "ops": "Se le ha contactado recientemente para firma y no contesta."}, {"nombre": "MEM1 - PC: Vicente Martín Montañez", "ops": "Se le ha contactado recientemente para firma y no contesta."}, {"nombre": "MEM1 - PC: MARK FRANCIS PENDRY", "ops": "Se le ha contactado recientemente para firma y no contesta."}, {"nombre": "MEM1 - PC: MARIA MONSERRAT MARGARIT BORRAT", "ops": "Se le ha contactado recientemente para firma y no contesta."}, {"nombre": "MEM1 - PC: VICENTE FERNANDEZ GARCIA", "ops": "Cliente se da de baja como autónomo y ya que no cumplió con el requisito de la subvención por tener un puesto laboral nuevo"}, {"nombre": "MEM1 - PC: RAQUEL ARGUDO MORCILLO", "ops": "Cliente con error al querer firmar en RED.ES, se le escala a Stefany Gil para gestionar firma"}, {"nombre": "MEM1 - PC: LATIFA CHILAH JIDAN", "ops": "Clienta inconforme con la propuesta SEO que se ha implementado en su web por lo que dice que no va a firmar nada, sin embargo, en intercom se observan"}, {"nombre": "MEM1 - PC: HENDERSON JESUS OLIVO ORTEGA", "ops": "Se le ha contactado recientemente para firma y no contesta."}, {"nombre": "MEM1 - PC: ANTONIO CERRATO PEREZ", "ops": "Estuvo en pdte firma el 6 de mar. de 2026"}, {"nombre": "MEM1 - PC: Halil INAN", "ops": "Cliente no contesta para firma"}, {"nombre": "MEM1 - PC: El Mostafa Bannar Bannar", "ops": "Estuvo en pdt firma 11 de mar. de 2026"}, {"nombre": "MEM1 - PC: GONZALEZ DOVAL GAEL", "ops": "Se le contacta y no contesta para firmar mem 1, ha mencionado recientemente que no va a firmar nada sin saber del ordenador y este ya aparece como ent"}, {"nombre": "MEM1 - PC: BEVERLY CRISTOBAL GONZALEZ", "ops": "Clienta descontenta con la gestión, quería cambiar el pc por uno de 1.000 euros y nunca se le hizo la gestión. Se da de baja"}, {"nombre": "MEM1 - PC: ANTONIO EDUARDO  MURCIA GARCÍA", "ops": "Se le contacta al cliente pero este no contesta y cuelga las llamadas"}, {"nombre": "MEM1 - PC: PAULA CRISTINA MARTINEZ DE QUEL PEREZ", "ops": "se escala a CS TL Por pendiente firma"}, {"nombre": "MEM1 - PC: MARIA JOSECAMPODONICO MENDOZA", "ops": "Cliente estuvo en pdte firma el 6 de mar. de 2026"}, {"nombre": "MEM1 - PC: FLORENTINA ENE", "ops": "El cliente estuvo en pdte firma 11 de mar. de 2026"}, {"nombre": "MEM1 - PC: Hafida Abdelkader el Hassani", "ops": "No hubo respuesta por parte del cliente"}, {"nombre": "MEM1 - PC: JOEL BLANCH LLOP", "ops": "Escalado a CS TL para contacto firma"}, {"nombre": "MEM1 - PC: ALESSANDRO JOSE DA SILVA", "ops": "Pide información de su kit digital y no hubo respuesta por parte nuestra"}, {"nombre": "MEM1 - PC: CLAUDIA VALENTINA SEPULVEDA SUAREZ", "ops": "Cliente manifiesta problema con PC hasta que no se resuelva no firma"}, {"nombre": "MEM1 - PC: MARURA REFORMAS S.L", "ops": "En espera de contacto escalado a cs TL"}, {"nombre": "MEM1 - PC: ANGELA SERRANO RUIZ", "ops": "En espera de contacto escalado a cs TL"}, {"nombre": "MEM1 - PC: MARIA GARCIA OTERO", "ops": "No contesta llamadas para que realice el pago del importe"}, {"nombre": "MEM1 - PC: BELKIS JULISA VELASQUEZ CASTILLO", "ops": "No hay respuesta del cliente para firmar"}, {"nombre": "MEM1 - PC: BARBARA GARCIA GUTIERREZ", "ops": "Cliente no da respuesta ante firma"}, {"nombre": "MEM1 - PC: MARIA DEL PILAR MARCOS TORRENS", "ops": "No hay respuesta de ante firma cliente"}, {"nombre": "MEM1 - PC: DANIELA PEÑUELA SARRIA", "ops": "No hay respuesta ante la firma y se evidencia en notas"}, {"nombre": "MEM1 - PC: Carla Dos Santos", "ops": "Se llama el cliente pero manda a buzon información encontrada en hubspot"}, {"nombre": "MEM1 - PC: IRENE DA SILVA", "ops": "Cliente no contesta llamadas ni mensajes para firma se evidencia en hubspot e intercom"}, {"nombre": "MEM1 - PC: PCI SUR SISTEMA Y SUMINISTROS SL", "ops": "Escalado a Cs TL para contacto con el cliente"}, {"nombre": "MEM1 - PC: JOSE FILANDER DELCID HENRIQUEZ", "ops": "Escalado a CS TL para lograr firma de cliente"}, {"nombre": "MEM1 - PC: José Perez Garcia", "ops": "Se llama el cliente por memoria pero no contesta para su respectiva firma"}, {"nombre": "MEM1 - PC: DAVID GIRONA RODRIGUEZ", "ops": "Se escala a CS TL para firma de memoria"}, {"nombre": "MEM1 - PC: Cristian sandu", "ops": "Escalado a CS TL para tramitar firma"}, {"nombre": "MEM1 - PC: RAUL COSTERO SARMIENTO", "ops": "Cliente ha intentado firmar pero le salta error escalo a CS TL para solución"}, {"nombre": "MEM1 - PC: PEDRO GARCIA GARCIA", "ops": "Se escala a CS tl para contacto firma"}, {"nombre": "MEM1 - PC: Escalofrio Instalaciones Sl", "ops": "Se escala a CS TL debido a falta de firma"}, {"nombre": "MEM1 - PC: TODOR KIRILOV SMILENOV", "ops": "Se escala a CS TL para realizar firma"}, {"nombre": "MEM1 - PC: FRANCISCO  CRUZ REQUENA", "ops": "Se escala a Cs Tl para firma"}, {"nombre": "MEM1 - PC: JUANA MARIA ALCAZAR MANZANERA", "ops": "Se escala a CS TL cliente le falta firmar"}, {"nombre": "MEM1 - PC: KATERINE GISELA CAJAMARCA CACERES", "ops": "Se escala a CS TL para realizar firma"}, {"nombre": "MEM1 - PC: Francisco González Sánchez", "ops": "Se escala a CS TL por falta de firma"}, {"nombre": "MEM1 - PC: VIDAKAME MULTISERVEIS, SL", "ops": "Se intenta contactar al cliente pero no contesta"}, {"nombre": "MEM1 - PC: TRINIDAD MORENO MORENO", "ops": "Clienta con PC entregado, hasta el momento el pc se encuentra en proceso de devolución pero la clienta no lo quizop devolver, de acuerdo a notas la cl"}, {"nombre": "MEM1 - PC: HAMZA KNIDIL BOUASRIA", "ops": "Se le contacta al cliente para firma, de momento no hay respuestas, se revisa intercom y tampoco las hay. Se escala a Stefanny Gil para la gestión"}, {"nombre": "MEM1 - PC: LUIS ALBERTO ANCHUELO PRIETO", "ops": "Se escala a CS TL para gestión firma"}, {"nombre": "MEM1 - PC: LOGISTICS AND ENGINEERING PORLEZ SL.", "ops": "Se escala a CS TL para gestión firma"}, {"nombre": "MEM1 - PC: Ruben Medrano Huertas", "ops": "Se escala a CS TL para gestión firma"}, {"nombre": "MEM1 - PC: JOSE GALDON GOMEZ", "ops": "Se encuentra entregado se escala a tramitación para presentar memoria"}, {"nombre": "MEM1 - PC: Carolina Pascual Martínez", "ops": "Se escala a CS TL para gestionar firma"}, {"nombre": "MEM1 - PC: Sandra Larraga Morata", "ops": "Se escala a CS TL para gestionar firma"}, {"nombre": "MEM1 - PC: Danny de León Hernández", "ops": "Se escala a CS TLpara gestionar firma"}, {"nombre": "MEM1 - PC: Natalia de cruz iglesias", "ops": "Se escala  CS TL para gestionar firma"}],
+  'Desistido': [{"nombre": "MEM1 - PC: NOSOLO DESIGN VALENCIA, S.L.", "ops": "Cliente desiste el acuerdo de pc y se hace devolución de pc y de dinero"}, {"nombre": "MEM1 - PC: FELGUEIRAS & ANGEL", "ops": "Cliente desisito por libre se encuentra en hubspot"}, {"nombre": "MEM1 - PC: Agustin Ureta", "ops": "Cliente desistio ya adjunto comprobante el 12 de febrero"}, {"nombre": "MEM1 - PC: SETH ASHLEY FORRESTER", "ops": "Cliente se da de baja desde septiembre, no deseaba continuar con el KD"}, {"nombre": "MEM1 - PC: SIMM MULTIMARCA LLEIDA SL", "ops": "IMPORTE ACUERDO NO COINCIDE CON PC ELEGIDO"}, {"nombre": "MEM1 - PC: FEDERICO FAMÁ", "ops": "Proyecto en estado baja desde septiembre, cliente desistió acuerdo"}, {"nombre": "MEM1 - PC: MARIA TERESA HILDEBRAND LOZANO", "ops": "Proyecto en estado baja desde septiembre, cliente desistió acuerdo"}, {"nombre": "MEM1 - PC: PAU VIDAL ALSINA", "ops": "Cliente desiste acuerdos desde octubre, por lo que se da proyecto como perdido"}, {"nombre": "MEM1 - PC: Maria Bilbao Maté", "ops": "Cliente desiste acuerdo desde noviembre, tanto para web como para PC, incluso rechazó le entrega del PC."}, {"nombre": "MEM1 - PC: RAMON GINER STEVE", "ops": "Se desiste el acuerdo por parde del cliente desde noviembre"}, {"nombre": "MEM1 - PC: MARTIN CASAS", "ops": "Cliente desiste se encuentra en hubspot y hay ticket asociado"}, {"nombre": "MEM1 - PC: Ali Ismael Mohamed", "ops": "Cliente desiste los acuerdos, pc estuvo en transito para entrega pero debido a esto se canceló."}, {"nombre": "MEM1 - PC: POL PINTO FABREGAT", "ops": "Se desisten los acuerdo acuerdo tanto de PC como MKT, se da de baja al proyecto"}, {"nombre": "MEM1 - PC: Karmit EvenZur", "ops": "Cliente se dio de baja porque no tiene interés en seguir con nosotros"}, {"nombre": "MEM1 - PC: JORGE LUIS TESONE", "ops": "El cliente desistió debido a la falta de disponibilidad del modelo solicitado, retrasos en la entrega y disconformidad con las alternativas ofrecidas."}, {"nombre": "MEM1 - PC: KALLYM JOHANNA CHENG GELVES", "ops": "Cliente solicito desistimiento y se encuentra en notas de hubspot"}, {"nombre": "MEM1 - PC: ALEJANDRO GIL VALTUEÑA", "ops": "Sin información"}, {"nombre": "MEM1 - PC: -- Ana María espadas delgado", "ops": "Clienta con PC entregado desde octubre, se le contactó frecuentemente para la firma de memoria. En febrero se comenta que el bono se consumió y el acu"}, {"nombre": "MEM1 - PC: SERGIO MANUEL SANCHEZ HERNANDEZ", "ops": "cliente desiste acuerdo y se le rembolso el dinero"}, {"nombre": "MEM1 - PC: Olinda Caman Chavez", "ops": "Cliente desiste sus 2 acuerdos se encuentra en hubspot"}, {"nombre": "MEM1 - PC:  INNOVATION ROOT SL", "ops": "En portal gestión no se encuentra oficializado"}],
+  'No realizó pago Importe': [{"nombre": "MEM1 - PC: CRISTOBAL REINOSO PORTAS", "ops": "Cliente no realizo pago extra de mac"}, {"nombre": "MEM1 - PC: NOVA LUXURY PROPERTIES SL", "ops": "Cliente no realizo pago extra de mac"}, {"nombre": "MEM1 - PC: AIDA DE FEBRER BOUKELMOUNE", "ops": "Cliente no realizo pago extra de mac"}, {"nombre": "MEM1 - PC: NATURALFUSTERS SL", "ops": "Cliente no realizo pago extra de mac"}, {"nombre": "MEM1 - PC: CRISTIAN DE JESÚS ÁNGELES SURIEL", "ops": "Cliente no realizo pago extra por mac además no hay stoc de mac pro"}, {"nombre": "MEM1 - PC: KARIM LUKACIK", "ops": "Cliente no realiza pago extra de su mac"}, {"nombre": "MEM1 - PC: NOAM XXI SL", "ops": "Cliente no realiza pago extra de su mac"}, {"nombre": "MEM1 - PC: EDUARDO RIVAS CAICEDO", "ops": "Cliente no realizó el pago del importe correspondiente y la memoria caducó"}, {"nombre": "MEM1 - PC: LOGISTICA GONZALEZ Y MARTINEZ S.L", "ops": "Cliente no realizó el pago del importe correspondiente y la memoria caducó"}, {"nombre": "MEM1 - PC: DAVID DONA AMADOR", "ops": "Cliente no realizó el pago del importe correspondiente y la memoria caducó"}, {"nombre": "MEM1 - PC: PATRICIA LINARES ARES", "ops": "Cliente no realizó el pago del importe correspondiente y la memoria caducó"}, {"nombre": "MEM1 - PC: ANITA JANE VINCE", "ops": "Cliente no realizo pago extra de mac y solicito baja"}, {"nombre": "MEM1 - PC: Gonzalo Mateos Ramon", "ops": "Cliente no realizo pago extra por mac"}, {"nombre": "MEM1 - PC: CLARA PARDO GROMACHES", "ops": "Cliente no hizo pago extra por mac"}, {"nombre": "MEM1 - PC: KATHERINE ZAVALETA PEÑA", "ops": "Cliente no realizo su pago extra de mac"}, {"nombre": "MEM1 - PC: JUAN CARLOS GONZALEZ VARGAS", "ops": "Cliente no realizo su pago extra por mac"}, {"nombre": "MEM1 - PC: EWA IRMINA KALUZYNSKA KORASADOWICZ", "ops": "Cliente no realizo pago extra por mac"}, {"nombre": "MEM1 - PC: YUSMEIDY SUAREZ DE APONTE", "ops": "Cliente norealiza pago de importe"}, {"nombre": "MEM1 - PC:  MAEVA MONIQUE QUESADA", "ops": "Cliente solicito baja y tampoco hizo pago extra por mac"}, {"nombre": "MEM1 - PC: Daniel Vicente Martínez Alabau", "ops": "Cliente no hizo el pago del extra por el pc. No alcanzamos a realizar la entrega del PC."}],
+  'No realizó pago IGIC': [{"nombre": "MEM1 - PC: ZANETTA IRENE  ZENNA", "ops": "No realizo pago IGIC"}, {"nombre": "MEM1 - PC: Angel salvador Rodriguez Idalgo", "ops": "Cliente acepta que no pago porque tuvo desconfianza por el tiempo que tardábamos en entregarle el equipo. Por ende se concluye perdido"}, {"nombre": "MEM1 - PC: OSCAR EFREN GONZALEZ AGUILAR", "ops": "Cliente no realizo pago para avanzar de stage"}, {"nombre": "MEM1 - PC: OSVALDO ESTEBAN CARRACAL CONEO", "ops": "No realizo su pago de igic para avanzar proyecto"}, {"nombre": "MEM1 - PC: VANESSA GOMIS CERVERA", "ops": "Cliente no realiza pago porque cree que es una estafa"}, {"nombre": "MEM1 - PC: LIZ KARINA TERRAZAS SEJAS", "ops": "Cliente no contesto y por ende no realizo el pago del igic"}, {"nombre": "MEM1 - PC: DIGITAL CRAFTERS SL", "ops": "No contesta mensajes ni llamadas por ende no realizo el pago se evidencia en hubspot"}, {"nombre": "MEM1 - PC: EDUARDO HERRERA RODRIGUEZ", "ops": "Finalizo ayuda y cliente no contesto las respectivas llamadas para realizar el pago"}, {"nombre": "MEM1 - PC: Jose Gregorio Caña Rodriguez", "ops": "No realizo pago de igic ni de importe"}, {"nombre": "MEM1 - PC:  CRISTINA POZUELO CHACON", "ops": "Se observa en Hubspot que el cliente no pago el Igic"}, {"nombre": "MEM1 - PC: ALMUDENA GARROCHO RODRIGUEZ", "ops": "Cliente no realizo pago correspondiente"}, {"nombre": "MEM1 - PC: FERNANDO BELLO PITA", "ops": "Cliente no realizo pago de importe ni igic se encuentra en notas de hubspot"}, {"nombre": "MEM1 - PC: KALYN RYO ISHIKAWA", "ops": "Cliente no realizo pago de importe ni igic se encuentra en notas de hubspot"}, {"nombre": "MEM1 - PC: FRANCISCO JOSE CORUJO AFONSO", "ops": "Cliente no realizo pago se encuentra en hubspot"}, {"nombre": "MEM1 - PC: GLOBAL SISTEM JVJ SL", "ops": "Cliente no realizo pago se encuentra en hubspot"}, {"nombre": "MEM1 - PC: FRANCISCO JAVIER ROSSELLO CIRER", "ops": "Cliente no contesto para concretar pago"}, {"nombre": "MEM1 - PC: PEDRO RODRIGUEZ BEJAR", "ops": "No pago por inconformidad con su web"}, {"nombre": "MEM1 - PC: MARÍA ALBERO MOLINA", "ops": "Cliente no contesto para realizar el pago"}],
+  'Gestión PC': [{"nombre": "MEM1 - PC: MATIAS AREVALO", "ops": "Se caduca memoria debido a que no habia stock de su mac"}, {"nombre": "MEM1 - PC: Stuard Alejandro Jara Zapata", "ops": "Cliente rechaza firma de memoria debido a que no se le entrega el PC correcto de acuerdo a las especificaciones que le habían dado."}, {"nombre": "MEM1 - PC: SIOSI PUNTO GRAFICO SL", "ops": "no le llega pc pq seur lo perdió y mayorista no gestionó a tiempo antes de caducar"}, {"nombre": "MEM1 - PC: Alejandro Contreras", "ops": "De acuerdo a nota se entregó el pc en dirección erronea, el cliente no volvió a contestar."}, {"nombre": "MEM1 - PC: YURI ANTONIO ALVARADO TORRES", "ops": "PC estuvo en transito pero no se le entregó al cliente porque no contestaba para recibirlo"}, {"nombre": "MEM1 - PC: EL QUIJOTE C.B.", "ops": "CS reporta recientemente que por error no se le envió el PC al cliente y la memoria caducó. Se quedó proyecto en stage \"Listo para envíar\" y nunca ava"}, {"nombre": "MEM1 - PC: KARY ALEXANDRA HERRERA ROMERO", "ops": "No había stock del pc Macbook Pro. Bono caduca el 20/02. Por temas logísticos no logramos entregar el pc antes de que caduque la memoria"}, {"nombre": "MEM1 - PC: JUAN VILLALBA TORRES", "ops": "Cliente ya se encuentra en proceso de devolución de pc"}, {"nombre": "MEM1 - PC: SANDRA FERNANDEZ MOTA", "ops": "Proyecto hasta \"listo para envíar\", pero no se concretó la entrega y el bono caducó"}, {"nombre": "MEM1 - PC: RUTH BERJANO GONZALEZ", "ops": "Clienta dice que no va a firmar memoria 1 porque  la pantalla del pc le ha llegado rota, hasta el momento no se le ha gestionado la recogida del PC"}, {"nombre": "MEM1 - PC: GEMMA BIURRUN TEIXIDO", "ops": "Sin información"}, {"nombre": "MEM1 - PC: Jose Manuel Robledillo Lopez", "ops": "Cliente no firma memoria por entrega de PC erróneo."}, {"nombre": "MEM1 - PC: ELOY CANDEDO LEYTTE", "ops": "Se dio de baja al cliente por tema de tiempos logisticos"}],
+  'Error de importe': [{"nombre": "MEM1 - PC: MARIA MAGDALENA FERNANDEZ CAYETANO", "ops": "IMPORTE ACUERDO NO COINCIDE CON PC ELEGIDO"}, {"nombre": "MEM1 - PC: ÁNGEL DAVID CASTILLO ARENAS", "ops": "Se reporta importe consumido, se le da de baja al proyecto desde el 12 de febrero"}, {"nombre": "MEM1 - PC: JUAN DIAZ PINA", "ops": "IMPORTE ACUERDO NO COINCIDE CON PC ELEGIDO"}, {"nombre": "MEM1 - PC: GUILLERMO SAENZ URDAY", "ops": "IMPORTE ACUERDO NO COINCIDE CON PC ELEGIDO"}, {"nombre": "MEM1 - PC: VITALII KUCHERENKO", "ops": "IMPORTE ACUERDO NO COINCIDE CON PC ELEGIDO"}, {"nombre": "MEM1 - PC: YOUCOM GLOBAL SL", "ops": "IMPORTE ACUERDO NO COINCIDE CON PC ELEGIDO"}, {"nombre": "MEM1 - PC: CARLOS JAVIER DOMINGUEZ MANZI", "ops": "IMPORTE ACUERDO NO COINCIDE CON PC ELEGIDO"}, {"nombre": "MEM1 - PC: Gisela Natalia López Mayán", "ops": "IMPORTE ACUERDO NO COINCIDE CON PC ELEGIDO"}, {"nombre": "MEM1 - PC: OSCAR RODRIGUEZ SANCHEZ", "ops": "IMPORTE ACUERDO NO COINCIDE CON PC ELEGIDO"}, {"nombre": "MEM1 - PC: BernatRueda.info", "ops": "IMPORTE ACUERDO NO COINCIDE CON PC ELEGIDO"}],
+  'Dificultad en plataforma': [{"nombre": "MEM1 - PC: ELISENDA RIFÀ BUSQUET", "ops": "Al ingresar y realizar firma Red.es genera error"}],
+  'Memoria 1 caducada': [{"nombre": "MEM1 - PC: RIVOURBANO SL", "ops": "Cliente desistio acuerdo"}],
+  'Sin evidencias': [{"nombre": "MEM1 - PC: JUAN ESTEVA VALIDO", "ops": "No se ha creado memoria 1 por faltan evidencias de PC"}],
+  'Baja': {
+    'Baja de autónomo': [{"nombre": "MEM1 - PC: Dory", "ops": "Cliente solicita baja se encuentra en hubspot"}, {"nombre": "MEM1 - PC: INNOPAGO, S.L.", "ops": "Cliente ya devolvio el pc se encuentra en hubspot"}, {"nombre": "MEM1 - PC: Francisco Jesús Carlos López", "ops": "Cliente solicito baja y se encuentra en hubspot"}, {"nombre": "MEM1 - PC: LEONOR NAVARRO GIL", "ops": "Gestiono su pc con otra empresa"}, {"nombre": "MEM1 - PC: Pedro Gomez Lozano", "ops": "Cliente solicito baja se encuentra en hubspot y ya se reembolso su dinero"}, {"nombre": "MEM1 - PC: JOAN RODRIGUEZ MIR", "ops": "Se intenta salvar el cliente pero no quiere la ayuda"}, {"nombre": "MEM1 - PC: SERGIO JAIME PEREZ", "ops": "Cliente solicita baja se encuentra en notas de hubspot"}, {"nombre": "MEM1 - PC: DANIEL MARCE PAVON", "ops": "Cliente se dio de baja como autonomo"}, {"nombre": "MEM1 - PC: Nicole Bazzi", "ops": "Cliente se dio de baja y ya esta en proceso de devolución PC"}, {"nombre": "MEM1 - PC: ANDREA FABIOLA MENDOZA MORENO", "ops": "Cliente indica que queria una caja registradora no un pc"}, {"nombre": "MEM1 - PC: MIREIA VILA LANA", "ops": "No esta interesada en continuar con el Kit Digital ni con el ordenador. Solicita aclaración sobre importe concedido al no haber autorizado continuar."}, {"nombre": "MEM1 - PC: LUISANA JIONMAR VECHIONACCI ALFARO", "ops": "No saben si les renuevan la concesión en 2026 (llevan 3,5 años y hay elecciones), así que quieren pausar el proyecto por precaución."}, {"nombre": "MEM1 - PC: EDUVIGES OLARIS PALACIO JIMENEZ", "ops": "Solicita que se recoja el pc se encuentra en intercom y hubspot, desistio del bono. Escalado al equipo de David"}, {"nombre": "MEM1 - PC: NURIA AGUSTINA MIGUEL", "ops": "Se dio de baja comenta que se lo va a tramitar otra persona."}, {"nombre": "MEM1 - PC: FINE PROGRAMS S.L.", "ops": "Clietnte se da de baja porque cierra empresa se encuentra en notas"}, {"nombre": "MEM1 - PC: GIMOR 2017 SL", "ops": "Cliente se da de baja se encuentra en notas de Hubspot"}, {"nombre": "MEM1 - PC: GLEYTON ARAÚJO OLIVEIRA", "ops": "Ya se le recogio el PC al cliente segun pipeline stage"}, {"nombre": "MEM1 - PC: HOUSAM OUADI LASGA", "ops": "Cliente se dio de baja porque no le interesa el kit digital se encuentra notas en hubspot"}, {"nombre": "MEM1 - PC: SERGIO VALADES EGIDO", "ops": "Cliente solicita baja por medio de correo por incumplimiento"}, {"nombre": "MEM1 - PC: carlor hernandez .", "ops": "Se encuentra en hubspot su solicitud de baja"}, {"nombre": "MEM1 - PC: PATRICIA GRANDE RAMIREZ", "ops": "Cliente solicita baja de autonomo se encuentra en hs"}, {"nombre": "MEM1 - PC: Yoan Sebastián Ladino Castrillon", "ops": "Cliente no realizo el pago extra de su mac"}, {"nombre": "MEM1 - PC: Xavier Juncosa Prats", "ops": "Decide darse de baja para evitar sanción"}, {"nombre": "MEM1 - PC: FERNANDO GARCIA ENCINAS", "ops": "Cliente no queria el PC"}, {"nombre": "MEM1 - PC: PEDRO JOSE CAÑAS MORENO", "ops": "Cliente solicito baja y ya se hizo devolución PC"}, {"nombre": "MEM1 - PC: CLAUDIA CORNEJO VIVES", "ops": "Su pc ya fue recogido"}, {"nombre": "MEM1 - PC: CARLOS MANUEL ENES GOMEZ", "ops": "Se encontro justificante de desistimiento en hubspot"}, {"nombre": "MEM1 - PC: DAVID USACH GARCIA", "ops": "Su pc ya fue recogido"}, {"nombre": "MEM1 - PC: Elisabeth Mallo Costa", "ops": "Cliente se dio de baja se encuentra en hubspot el 5 de enero"}],
+    'Descontento servicio': [{"nombre": "MEM1 - PC: Beatriz Iban Diezhandino", "ops": "Cliente baja desde septiembre debido a que no le gustó la gestión hecha por nosotros, mencionando disgusto porque la web tenía mucho trabajo hecho con"}, {"nombre": "MEM1 - PC: ALONSO JAVIER MARQUEZ BRITO", "ops": "Proyecto con baja desde enero, posteriormente el cliente había solicitado la baja y no se había gestionado, en notas del objeto empresas se confirma. "}, {"nombre": "MEM1 - PC: JOSEP RAMOS ORELLANA", "ops": "Cliente se da de baja debido a que el pc está entregado, está pendiente la recogida pero el cliente hasta el momento no contesta"}, {"nombre": "MEM1 - PC: JORGE ANTONIO IDALGO MARCILLO", "ops": "El cliente ha hecho ghosting constantemente y no se encontraba en españa, el pc está en transito pero debido a la inconformidad con nuestro servicio s"}, {"nombre": "MEM1 - PC: ALICIA FERNANDEZ VALCARCEL", "ops": "Cliente se dio de baja debido a que estaba descontento con la gestión por nuestra parte, nunca se le contacto correctamente para la gestión de la web "}, {"nombre": "MEM1 - PC: SUMA MEDICINA ESTETICA SOCIEDAD LIMITADA", "ops": "Cliente indica que no quiere saber nada de Orbidi"}, {"nombre": "MEM1 - PC: BORJA GONZALES ROGRIGUEZ", "ops": "Cliente se da de baja por inconformidad en la gestión, necesitaba su PC urgente para trabajar y al no tenerlo en el tiempo esperado se molestó y no si"}, {"nombre": "MEM1 - PC: Marilys José Ugas Salcedo", "ops": "Cliente disgustado porque en ningún momento se le informó que tenía que pagar IGIC, por eso se dio de baja"}, {"nombre": "MEM1 - PC: Pedro Pérez Torres", "ops": "Cliente se da de baja porque piensa que es una estafa y no se le comunicó de manera correcta el valor extra que debía pagar por el PC"}, {"nombre": "MEM1 - PC: JUAN ANTONIO TEJADA  PEREZ", "ops": "El cliente disconforme con la gestión del KD por parte de nosotros, se dió de baja desde noviembre."}, {"nombre": "MEM1 - PC: Rocío Fernández Oronoz Minguez", "ops": "Clienta descontenta con la gestión rechaza PC y proyecto, no quiere continuar y no desea nada con nosotros"}, {"nombre": "MEM1 - PC: ALEKSEI SEMIGUK", "ops": "Cliente baja desde octubre debido a que no quería continuar con nosotros por inconformidad con la gestión, deseaba hacerlo con otro ADA."}, {"nombre": "MEM1 - PC: MARIA ANGELES ALONSO GARCIA", "ops": "El cliente exige la baja inmediata, solicita salir del grupo de WhatsApp y amenaza con escalar el caso a organismos oficiales si no se gestiona de for"}, {"nombre": "MEM1 - PC: MANASES APLICACIONES SL", "ops": "En hubspot se solicita baja cliente ya se encontraba en stage no calificado, se agrega estado baja."}, {"nombre": "MEM1 - PC: PEDRO LUIS VADILLO GARCIA", "ops": "Cliente se da de baja por inconformidad, deja reseñas negativas y no se siente conforme con la gestión relacionada con nosotros"}],
+    'Sin motivo': [{"nombre": "MEM1 - PC: MARIANA GISELA MONTENEGRO TORREALBA", "ops": "Se escala a Lider logistica para especificar caso"}, {"nombre": "MEM1 - PC: MARINO RODRIGUEZ DE MIGUEL", "ops": "Cliente comenta que no quiere continuar con el kit digital y se da de baja"}, {"nombre": "MEM1 - PC: MARIA ISABEL IZQUIERDO ROMERO", "ops": "Cliente no firma memoria, se da de baja desde junio del anterior año"}, {"nombre": "MEM1 - PC: DANIEL VIDAL CUADRADO", "ops": "Cliente se dio de baja y cancelación de servicio se encuentra en intercom"}, {"nombre": "MEM1 - PC: Maria Florencia Garriga Gimenez", "ops": "Cliente decidio tramitar baja se evidencia por hubspot"}, {"nombre": "MEM1 - PC: MELANIE ANN FREEMAN", "ops": "Cliente solicita baja por problemas se encuentra en notas de hubspot"}, {"nombre": "MEM1 - PC: Juan Francisco Serrano del Pozo", "ops": "Se dio de baja en Red.es se ecnuentra nota en hubspot"}],
+    'Sin interés en proyecto': [{"nombre": "MEM1 - PC: LAURENTINA JIMENEZ MILLANES", "ops": "El cliente se jubiló, menciona que no le interesa continuar"}, {"nombre": "MEM1 - PC: JUAN CABANILLAS ADAMEZ", "ops": "Cliente con baja desde agosto, CS la confirma sin dejar claro el motivo.\n\nRevisando en intercom el cliente se jubilaba en octubre y no le interesaba c"}, {"nombre": "MEM1 - PC: María del Carmen Bejar Orozco", "ops": "Clienta se da de baja debido a que en su momento se encontraba enfocada con otras cosas, por lo que decidió desistir acuerdos."}, {"nombre": "MEM1 - PC: INES TAVEIRA MARQUES", "ops": "Cliente se dió de baja debido a que no quizo seguir con nosotros, al comunicarse con el cuelga enseguida"}],
+    'Gestión Pc': [{"nombre": "MEM1 - PC: ALBERTO GOMEZ MORILLO", "ops": "Cliente adjunto justificante el 9 de marzo\nSe hizo desistimiento del acuerdo cuando ya estaba la memoria 1 presentada. El pc está en proceso de devolu"}, {"nombre": "MEM1 - PC: GEMMA CASALS PLA", "ops": "Clienta se da de baja debido a que no le interesan las referencias de MAC de baja GAMA"}, {"nombre": "MEM1 - PC: OCTAVIAN MARCHITAN", "ops": "Cliente solicita la baja del PC a causa de rotura de Stock de MacBook pro."}],
+    'Motivos personales': [{"nombre": "MEM1 - PC: DARLANE PLANTARD", "ops": "Cliente desde septiembre presenta baja debido a que no podía continuar con el proyecto por una enfermedad."}, {"nombre": "MEM1 - PC: Antonio Zambrana Rivas", "ops": "Se dio de baja por problemas de salud"}],
+    'Cierre de negocio': [{"nombre": "MEM1 - PC: Mohamed akhachab", "ops": "Cliente se dio de baja indica que tiene su negocio cerrado"}, {"nombre": "MEM1 - PC: MARCOS GERMAN RIVEIRO VARELA", "ops": "Cliente se dio de baja indica que tiene su negocio cerrado"}]
+  }
+};
+
+        function verProyectosCausa(causa, subcausa = null) {
+            let datos = [];
+            
+            if (causa === 'Baja' && typeof datosProyectosMKT['Baja'] === 'object' && !Array.isArray(datosProyectosMKT['Baja'])) {
+                // Para Baja con subcausas
+                if (subcausa) {
+                    datos = datosProyectosMKT['Baja'][subcausa] || [];
+                } else {
+                    // Si no se especifica subcausa, mostrar todas las subcausas
+                    document.getElementById('modalTituloCausa').textContent = 'Baja - Selecciona una subcausa';
+                    let html = '<div style="padding: 20px;">';
+                    for (let sub in datosProyectosMKT['Baja']) {
+                        const cantidad = datosProyectosMKT['Baja'][sub].length;
+                        html += `<button onclick="verProyectosCausa('Baja', '${sub}')" style="display: block; width: 100%; margin: 8px 0; padding: 12px; background: #667eea; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: 600; text-align: left;">${sub} (${cantidad})</button>`;
+                    }
+                    html += '</div>';
+                    document.getElementById('contenidoModalProyectos').innerHTML = html;
+                    document.getElementById('modalProyectos').style.display = 'block';
+                    return;
+                }
+            } else {
+                datos = datosProyectosMKT[causa] || [];
+            }
+            
+            if (!datos || datos.length === 0) {alert('No hay datos');return;}
+            
+            let html = '<table style="width:100%; border-collapse: collapse; font-size: 13px;"><thead><tr style="background: #667eea; color: white;"><th style="border: 1px solid #ddd; padding: 12px; text-align: left;">Nombre del Objeto</th><th style="border: 1px solid #ddd; padding: 12px; text-align: left;">Comentarios OPS Tram</th></tr></thead><tbody>';
+            
+            datos.forEach((item, idx) => {
+                const bgColor = idx % 2 === 0 ? '#fff' : '#f9f9f9';
+                html += '<tr style="background: ' + bgColor + ';"><td style="border: 1px solid #ddd; padding: 12px; vertical-align: top; word-break: break-word;">' + item.nombre + '</td><td style="border: 1px solid #ddd; padding: 12px; vertical-align: top; word-break: break-word;">' + item.ops + '</td></tr>';
+            });
+            
+            html += '</tbody></table>';
+            const titulo = subcausa ? causa + ' - ' + subcausa : causa;
+            document.getElementById('modalTituloCausa').textContent = titulo + ' (' + datos.length + ' registros)';
+            document.getElementById('contenidoModalProyectos').innerHTML = html;
+            document.getElementById('modalProyectos').style.display = 'block';
+        }
+        function verProyectosPC(causa, subcausa = null) {
+            let datos = [];
+            
+            if (causa === 'Baja' && typeof datosProyectosPC['Baja'] === 'object' && !Array.isArray(datosProyectosPC['Baja'])) {
+                if (subcausa) {
+                    datos = datosProyectosPC['Baja'][subcausa] || [];
+                } else {
+                    document.getElementById('modalTituloCausa').textContent = 'Baja (PC) - Selecciona una subcausa';
+                    let html = '<div style="padding: 20px;">';
+                    for (let sub in datosProyectosPC['Baja']) {
+                        const cantidad = datosProyectosPC['Baja'][sub].length;
+                        html += `<button onclick="verProyectosPC('Baja', '${sub}')" style="display: block; width: 100%; margin: 8px 0; padding: 12px; background: #667eea; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: 600; text-align: left;">${sub} (${cantidad})</button>`;
+                    }
+                    html += '</div>';
+                    document.getElementById('contenidoModalProyectos').innerHTML = html;
+                    document.getElementById('modalProyectos').style.display = 'block';
+                    return;
+                }
+            } else {
+                datos = datosProyectosPC[causa] || [];
+            }
+            
+            if (!datos || datos.length === 0) {alert('No hay datos');return;}
+            
+            let html = '<table style="width:100%; border-collapse: collapse; font-size: 13px;"><thead><tr style="background: #667eea; color: white;"><th style="border: 1px solid #ddd; padding: 12px; text-align: left;">Nombre del Objeto</th><th style="border: 1px solid #ddd; padding: 12px; text-align: left;">Comentarios OPS Tram</th></tr></thead><tbody>';
+            
+            datos.forEach((item, idx) => {
+                const bgColor = idx % 2 === 0 ? '#fff' : '#f9f9f9';
+                html += '<tr style="background: ' + bgColor + ';"><td style="border: 1px solid #ddd; padding: 12px; vertical-align: top; word-break: break-word;">' + item.nombre + '</td><td style="border: 1px solid #ddd; padding: 12px; vertical-align: top; word-break: break-word;">' + item.ops + '</td></tr>';
+            });
+            
+            html += '</tbody></table>';
+            const titulo = subcausa ? 'PC - ' + causa + ' - ' + subcausa : 'PC - ' + causa;
+            document.getElementById('modalTituloCausa').textContent = titulo + ' (' + datos.length + ' registros)';
+            document.getElementById('contenidoModalProyectos').innerHTML = html;
+            document.getElementById('modalProyectos').style.display = 'block';
+        }
+
+        function cerrarModalProyectos() {
+            document.getElementById('modalProyectos').style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('modalProyectos');
+            if (event.target == modal) {modal.style.display = 'none';}
+        }
     </script>
+
+    <!-- MODAL PARA VER PROYECTOS POR CAUSA -->
+    <div id="modalProyectos" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 9999; overflow-y: auto; padding-top: 50px;">
+        <div style="background: white; margin: 0 auto; padding: 30px; border-radius: 8px; max-width: 900px; box-shadow: 0 4px 12px rgba(0,0,0,0.3);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 2px solid #667eea;">
+                <h2 id="modalTituloCausa" style="margin: 0; color: #667eea; font-size: 18px; font-weight: 600;">Proyectos</h2>
+                <button onclick="cerrarModalProyectos()" style="background: #667eea; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; font-weight: 600; font-size: 14px;">✕ Cerrar</button>
+            </div>
+            <div id="contenidoModalProyectos" style="max-height: 600px; overflow-y: auto;"></div>
+        </div>
+    </div>
 </body>
 </html>
